@@ -1,43 +1,16 @@
 #include "./header.h"
 #include "./colors.h"
+#include "./view/debug.c"
 
-typedef struct{
-    int version;
-    const char* name;
-    const char* email;
-} configuration;
+int main(){
+    s_configuration config = Config();
 
-static int handler(void* user, const char* section, const char* name, const char* value){
-    configuration* pconfig = (configuration*)user;
+    printf("\nversion: %d\nname: %s\nemail: %s\n", 
+        config.version, 
+        config.name, 
+        config.email
+    );
 
-    #define MATCH(s, n) strcmp(section, s) == 0 && strcmp(name, n) == 0
-    if (MATCH("protocol", "version")) {
-        pconfig->version = atoi(value);
-    } else if (MATCH("user", "name")) {
-        pconfig->name = strdup(value);
-    } else if (MATCH("user", "email")) {
-        pconfig->email = strdup(value);
-    } else {
-        return 0;  /* unknown section/name, error */
-    }
-    return 1;
-}
-
-int main(int argc, char* argv[]){
-    configuration config;
-    config.version = 0;  /* set defaults */
-    config.name = NULL;
-    config.email = NULL;
-
-    if (ini_parse("./config.ini", handler, &config) < 0) {
-        printf("Não é possivel carregar: './config.ini'\n");
-        return 1;
-    }
-
-    printf("\nversion=%d\nname=%s\nemail=%s\n\n", config.version, config.name, config.email);
-
-    if (config.name) free((void*)config.name);
-    if (config.email) free((void*)config.email);
-
+    #include "./clearFree.c"
     return 0;
 }
