@@ -11,14 +11,12 @@
     https://github.com/benhoyt/inih
 
 */
+#include <ctype.h>
+#include <ini.h>
 
 #if defined(_MSC_VER) && !defined(_CRT_SECURE_NO_WARNINGS)
 #endif
 
-#include <stdio.h>
-#include <ctype.h>
-#include <string.h>
-#include <ini.h>
 
 #if !INI_USE_STACK
 #endif
