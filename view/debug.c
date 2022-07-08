@@ -1,11 +1,15 @@
-#include "../controller/handler.c"
+#include "../controller/fill.c"
 
-s_configuration Config(){
-  s_configuration config;
+void imprimir(){
+  s_configuration config = Config();
 
-  if (ini_parse("./config.ini", handler, &config) < 0){
-      printf("Can't load './config.ini'\n");
-  }
+  printf("\n%sversion: %d\nname: %s\nemail: %s%s\n", 
+    color_azul, 
+    config.version,
+    config.name,
+    config.email,
+    color_fim
+  );
 
-  return( config );
+#include "../src/clearFree.c"
 }
