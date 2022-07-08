@@ -4,11 +4,11 @@ void imprimir(){
   s_configuration config = Config();
 
   printf("\n%sversion: %d\nname: %s\nemail: %s%s\n", 
-    color_azul, 
+    __COLOR_BLUE, 
     config.version,
     config.name,
     config.email,
-    color_fim
+    __COLOR_FIM
   );
 
 #include "../src/clearFree.c"
