@@ -1,9 +1,10 @@
-#include "../controller/fill.c"
+#include "../controller/verified_file_config.c"
+#include "../controller/fill_matriz.c"
 
-void imprimir(){
+void unit_testing_1(){
   s_configuration config = Config();
 
-  printf("\n%sLINHAS: %d\nCOLUNAS: %d\nOCORRENCIA: %d%s\n", 
+  printf("\n%s───────────────────────────────────────\nLINHAS: %d\nCOLUNAS: %d\nOCORRENCIA: %d\n───────────────────────────────────────%s\n", 
     __COLOR_BLUE, 
     config.LINHAS,
     config.COLUNAS,
@@ -11,9 +12,12 @@ void imprimir(){
     __COLOR_FIM
   );
 
-  /* 
-  if (config.name)
-    free((void *)config.name); 
-  */
+  /* if (config.name) free((void *)config.name); */
 
+}
+
+void all_unit_testing(){
+
+  // unit_testing_1();
+  fillMatriz();
 }
