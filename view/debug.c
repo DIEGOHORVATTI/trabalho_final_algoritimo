@@ -3,13 +3,17 @@
 void imprimir(){
   s_configuration config = Config();
 
-  printf("\n%sversion: %d\nname: %s\nemail: %s%s\n", 
+  printf("\n%sLINHAS: %d\nCOLUNAS: %d\nOCORRENCIA: %d%s\n", 
     __COLOR_BLUE, 
-    config.version,
-    config.name,
-    config.email,
+    config.LINHAS,
+    config.COLUNAS,
+    config.OCORRENCIA,
     __COLOR_FIM
   );
 
-#include "../src/clearFree.c"
+  /* 
+  if (config.name)
+    free((void *)config.name); 
+  */
+
 }

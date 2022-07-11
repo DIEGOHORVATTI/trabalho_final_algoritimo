@@ -73,7 +73,7 @@ static char* strncpy0(char* dest, const char* src, size_t size){
 }
 
 /* See documentation in header file. */
-int ini_parse_stream(ini_reader reader, void* stream, ini_handler handler,void* user){
+int ini_parse_stream(ini_reader reader, void* stream, ini_handler handler,void* USER){
     /* Uses a fair bit of stack (use heap instead if you need to) */
     #if INI_USE_STACK
         char line[INI_MAX_LINE];
@@ -108,7 +108,7 @@ int ini_parse_stream(ini_reader reader, void* stream, ini_handler handler,void* 
             if (*prev_name && *start && start > line) {
                 /* Non-blank line with leading whitespace, treat as continuation
                 of previous name's value (as per Python configparser). */
-                if (!HANDLER(user, section, prev_name, start) && !error) error = lineno;
+                if (!HANDLER(USER, section, prev_name, start) && !error) error = lineno;
             }
         #endif
         else if (*start == '[') {
@@ -140,7 +140,7 @@ int ini_parse_stream(ini_reader reader, void* stream, ini_handler handler,void* 
 
                 /* Valid name[=:]value pair found, call handler */
                 strncpy0(prev_name, name, sizeof(prev_name));
-                if (!HANDLER(user, section, name, value) && !error) error = lineno;
+                if (!HANDLER(USER, section, name, value) && !error) error = lineno;
             }
             else if (!error) {
                 /* No '=' or ':' found on name[=:]value line */
@@ -157,16 +157,16 @@ int ini_parse_stream(ini_reader reader, void* stream, ini_handler handler,void* 
 }
 
 /* See documentation in header file. */
-int ini_parse_file(FILE* file, ini_handler handler, void* user) { return ini_parse_stream((ini_reader)fgets, file, handler, user); }
+int ini_parse_file(FILE* file, ini_handler handler, void* USER) { return ini_parse_stream((ini_reader)fgets, file, handler, USER); }
 
 /* See documentation in header file. */
-int ini_parse(const char* filename, ini_handler handler, void* user){
+int ini_parse(const char* filename, ini_handler handler, void* USER){
     FILE* file;
     int error;
 
     file = fopen(filename, "r");
     if (!file) return -1;
-    error = ini_parse_file(file, handler, user);
+    error = ini_parse_file(file, handler, USER);
     fclose(file);
     return error;
 }
@@ -199,10 +199,10 @@ static char* ini_reader_string(char* str, int num, void* stream) {
 }
 
 /* See documentation in header file. */
-int ini_parse_string(const char* string, ini_handler handler, void* user) {
+int ini_parse_string(const char* string, ini_handler handler, void* USER) {
     ini_parse_string_ctx ctx;
 
     ctx.ptr = string;
     ctx.num_left = strlen(string);
-    return ini_parse_stream((ini_reader)ini_reader_string, &ctx, handler, user);
+    return ini_parse_stream((ini_reader)ini_reader_string, &ctx, handler, USER);
 }

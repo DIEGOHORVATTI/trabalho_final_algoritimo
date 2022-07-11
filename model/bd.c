@@ -1,5 +1,6 @@
 typedef struct{
-  int version;
-  const char *name;
-  const char *email;
+  int LINHAS;
+  int COLUNAS;
+  int OCORRENCIA;
+  //const char *name;
 }s_configuration;

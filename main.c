@@ -1,15 +1,25 @@
 #include "./src/header.h"
 #include "./view/debug.c"
+#include <time.h>
 
 int main(){
+
+    srand(time(NULL));
     
     imprimir();
 
     FILE *arquivo;
     
-    int i, j, matriz[3][3];
-    
-    arquivo = fopen("matriz.txt", "w"); 
+    //matriz dinamica
+    int **matriz;
+    matriz = malloc(3 * sizeof(int *));
+
+    //matriz de vetores
+    for (int i = 0; i < 3; i++){
+        matriz[i] = malloc(3 * sizeof(int));
+    }
+
+    arquivo = fopen("./matriz.txt", "w"); 
   
     //verificar se arquivo existe
     if( arquivo == NULL ){
@@ -17,29 +27,26 @@ int main(){
     	exit(1);
 	}  
 
-    //atribuir valores aleatórios a matriz        
-    for(i=0;i<3;i++){
-        for(j=0;j<3;j++){
+    //atribuir valores aleatórios a matriz (A, T, C, G)  
+    for( int j=0; j < 3; j++){
+        for( int i=0; i < 3; i++){
             matriz[i][j] = 10+(rand() % 90);
         }
 	}	
 	
     //atribuir matriz ao arquivo 
-    for(i=0;i<3;i++){
-        for(j=0;j<3;j++){
+    for(int j=0; j < 3; j++){
+        for( int i=0; i < 3;i++){
        		fprintf( arquivo,"%d\t", matriz[i][j]);
    		}
-   		fprintf( arquivo,"\n");
-    }
-    
-    //printagem de matriz
-    for(i=0;i<3;i++){
-        for(j=0;j<3;j++){
-            printf(" %d", matriz[i][j]);
-        }
-        printf("\n");
+
+   		if(j < 3-1) fprintf(arquivo, "\n");
+        
     }
 
+    //printagem de matriz
+    
+    free(matriz);
     fclose(arquivo);
 
     return 0;
