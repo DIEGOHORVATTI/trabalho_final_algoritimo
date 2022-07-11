@@ -27,7 +27,7 @@ function fHelp(){
 	echo -e "│                                       │"
 	echo -e "│ [ dev ]                               │"
 	echo -e "│ --create-file.: criar arquivo.c       │"
-	echo -e "│ --gitgnore....: criar .gitgnore       │"
+	echo -e "│ --gitignore....: criar .gitgnore      │"
 	echo -e "│ --build.......: verificação de bugs   │"
 	echo -e "│                                       │"
 	echo -e "│ [ user ]                              │"
@@ -114,7 +114,7 @@ for i in "$@"; do
 		--create-file)
 			creat_file_f
 		;;
-		--gitgnore)
+		--gitignore)
 			fGitgnore
 		;;
 		--git)
