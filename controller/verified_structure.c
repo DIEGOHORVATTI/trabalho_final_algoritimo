@@ -1,5 +1,8 @@
 #include "../model/bd.c"
 
+// atoi   -> inteiro, int
+// strdup -> string, *char
+
 // 1) Verificação da API de .config:
 // 2) Existe um [cabeçalho]? 
 // 3) Nesse cabeçalho a um dado e um valor para ser lido?
@@ -17,8 +20,8 @@ static int handler(void* USER, const char* section, const char* name, const char
     else if(MATCH("MATRIZ", "COLUNAS")) { pconfig->COLUNAS = atoi(value); }
 
     else if(MATCH("USER", "OCORRENCIA")){ pconfig->OCORRENCIA = atoi(value); }
-    
-    //else if (MATCH("USER", "email")){ pconfig->email = strdup(value); } 
+
+    else if (MATCH("USER", "ARQUIVO_TXT")){ pconfig->ARQUIVO_TXT = strdup(value); } 
     
     else{ return(0); }
 

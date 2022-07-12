@@ -29,7 +29,7 @@ void fillMatriz(){
 
     s_configuration config = Config();
 
-    FILE *arquivo = fopen("./matriz.txt", "w+");
+    FILE *arquivo = fopen(config.ARQUIVO_TXT, "w+");
 
     // matriz dinamica
       // aloca um vetor de config.LINHAS ponteiros para linhas

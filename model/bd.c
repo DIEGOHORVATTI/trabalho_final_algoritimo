@@ -2,5 +2,5 @@ typedef struct{
   int LINHAS;
   int COLUNAS;
   int OCORRENCIA;
-  //const char *name;
+  const char *ARQUIVO_TXT;
 }s_configuration;

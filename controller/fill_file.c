@@ -11,7 +11,7 @@
 void escreverFile(char **matriz){
 
   s_configuration config = Config();
-  FILE *arquivo = fopen("./matriz.txt", "w+");
+  FILE *arquivo = fopen(config.ARQUIVO_TXT, "w+");
 
   // atribuir valores aleatórios a matriz [A, T, C, G]
   for (int j = 0; j < config.COLUNAS; j++){
@@ -29,9 +29,10 @@ void escreverFile(char **matriz){
 }
 
 char lerFile(char **matriz){
-  
-  FILE *arquivo = fopen("./matriz.txt", "r");
-  
+
+  s_configuration config = Config();
+  FILE *arquivo = fopen(config.ARQUIVO_TXT, "r");
+
   while (!(feof(arquivo))){
     printf("%c", fgetc(arquivo));
   }

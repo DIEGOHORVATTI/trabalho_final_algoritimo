@@ -5,20 +5,21 @@
 void unit_testing_1(){
   s_configuration config = Config();
 
-  printf("\n%s───────────────────────────────────────\nLINHAS: %d\nCOLUNAS: %d\nOCORRENCIA: %d\n───────────────────────────────────────%s\n", 
+  printf("\n%s───────────────────────────────────────\nLINHAS: %d\nCOLUNAS: %d\nOCORRENCIA: %d\nArquivo de texto: %s\n───────────────────────────────────────%s\n", 
     __COLOR_BLUE, 
     config.LINHAS,
     config.COLUNAS,
     config.OCORRENCIA,
+    config.ARQUIVO_TXT,
     __COLOR_FIM
   );
 
-  /* if (config.name) free((void *)config.name); */
+  if (config.ARQUIVO_TXT) free((void *)config.ARQUIVO_TXT);
 
 }
 
 void all_unit_testing(){
 
-  // unit_testing_1();
+  //unit_testing_1();
   fillMatriz();
 }

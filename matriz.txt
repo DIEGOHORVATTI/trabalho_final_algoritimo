@@ -1,2 +1,6 @@
-T T 
-T T 
+A G A T A A 
+C G A T G C 
+C G G G G A 
+C C T C A A 
+C T C G A A 
+T C G G C C 
