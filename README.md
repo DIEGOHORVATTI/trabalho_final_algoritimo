@@ -43,6 +43,7 @@ int isSimian (char[] dna); // Exemplo da assinatura em C
 
 Você receberá como parâmetro um array de char (string) que representa cada linha de uma tabela (matriz) quadrada de (NxN) com a sequência de DNA, como no exemplo abaixo:
 
+<img  src="./src/img.png" width="100%"/>
 
 As letras da string só podem ser: (A, T, C, G), que representa cada base nitrogenada do DNA.
 
@@ -50,13 +51,11 @@ Você saberá se um DNA pertence a um símio, se encontrar uma ou mais sequênci
 
 char dna[] = {"CTGAGACTATGCTATTGTAGAGGGCCCCTATCACTG"};
 
-
 Nesse caso, a chamada para a função isSimian(char[] dna) deve retornar 1 ("true").
-
 
 Com base nessas informações, desenvolva o algoritmo da maneira mais eficiente possível, de acordo com a assinatura proposta isSimian(char[] dna), que seja capaz de identificar corretamente símios.
 
-Exemplos de arquivos texto com a sequência de DNA tanto dos humanos quanto dos símios podem ser encontrados nos hyperlinks.
+Exemplos de arquivos texto com a sequência de DNA tanto dos <a href="./src/exemplo_arquivo_sequencia_DNA_humano.txt">humanos</a> quanto dos <a href="./src/exemplo_arquivo_sequencia_DNA_simios.txt">símios</a> podem ser encontrados nos hyperlinks.
 
 
 O que entregar
