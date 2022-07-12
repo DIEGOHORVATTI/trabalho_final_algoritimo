@@ -1,5 +1,5 @@
 //ler arquivo txt e alocar em um vetor
-void lerFile(){
+int lerFile(){
 
   s_configuration config = Config();
   FILE *arquivo = fopen(config.ARQUIVO_TXT, "r");
@@ -16,9 +16,9 @@ void lerFile(){
       fscanf(arquivo, "%s", &vetorDNA[i]);
     }
 
-    isSimian(vetorDNA);
-    
-  }else{ printf("\n%s Erro ao alocar vetor dinamico de matriz: 'VetorDNA' %s\n", __COLOR_RED, __COLOR_FIM ); }
+    return(isSimian(vetorDNA));
+
+    }else{ printf("\n%s Erro ao alocar vetor dinamico de matriz: 'VetorDNA' %s\n", __COLOR_RED, __COLOR_FIM ); }
   
 
   free(vetorDNA);

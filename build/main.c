@@ -15,14 +15,13 @@
 #include "../controller/read_file.c"            // ler dados do arquivo e atualizar a matriz com os mesmos
 #include "../controller/fill_matriz.c"          // preencher matriz com dados de DNA aleatório e devolver a matriz para fill_file.c
 
-//Front end´s
-#include "../view/debug.c"                      // debug
+//Front end
 #include "../view/index.c"                      // visualização de front end
 
 int main(){
-    
-   all_unit_testing();                          // testes unitários de debug
-   view_index();                                // visualização geral
 
-    return (0);
+    fillMatriz();                               //preencher matriz
+    view_index();                               // visualização geral
+
+    return(0);
 }
