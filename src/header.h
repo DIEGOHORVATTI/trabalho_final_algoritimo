@@ -5,4 +5,3 @@
 #include <sys/time.h>       // system microseconds
 #include <unistd.h>         // operating system API
 #include "../API/inih.c"    // lib read file .conf
-#include "../src/colors.h"  // cores globais
