@@ -29,7 +29,7 @@ int isSimian(char *dna){
   }
 
   char *T_vertical_horizontal = strstr(dna, T);
-  if(T_vertical_horizontal){
+  if(T_vertical_horizontal){ 
     printf(" %s\n", T);
     return(1); 
   }
