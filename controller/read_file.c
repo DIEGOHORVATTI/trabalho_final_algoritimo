@@ -1,5 +1,5 @@
 //ler arquivo txt e alocar em um vetor
-char lerFile(char **matriz){
+void lerFile(){
 
   s_configuration config = Config();
   FILE *arquivo = fopen(config.ARQUIVO_TXT, "r");
@@ -15,25 +15,9 @@ char lerFile(char **matriz){
     for( int i=0; !(feof(arquivo)); i++ ){
       fscanf(arquivo, "%s", &vetorDNA[i]);
     }
-    
-    //atribuir as dados do vetor a matriz
-    int y=0;
-    for(int j=0; j < config.COLUNAS; j++){
-      for (int i=0; i < config.LINHAS; i++){
-        *(*(matriz+i)+j) = vetorDNA[y];
-        y++;
-      }
-    }
-    
-    //printar matriz
-    for(int j=0; j < config.COLUNAS; j++){
-      for (int i=0; i < config.LINHAS; i++){
-        printf(" %c", *(*(matriz+i)+j));
-      }
-      printf("\n");
-    }
 
-    isSimian(matriz);
+    isSimian(vetorDNA);
+    
   }else{ printf("\n%s Erro ao alocar vetor dinamico de matriz: 'VetorDNA' %s\n", __COLOR_RED, __COLOR_FIM ); }
   
 
