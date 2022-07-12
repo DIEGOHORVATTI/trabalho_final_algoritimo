@@ -56,16 +56,8 @@ void fillMatriz(){
           }
         }
 
-        // atribuir matriz ao arquivo
-        for (int j = 0; j < config.COLUNAS; j++){
-          for (int i = 0; i < config.LINHAS; i++){
-            fputc( *(*(matriz + i) + j), arquivo); // letra
-            fputc('\t', arquivo);                  // espaço
-          }
-          if (j < config.COLUNAS - 1){
-            fputc('\n', arquivo);                  // quebra de linha
-          }
-        }
+        escreverFile(matriz);
+        lerFile(matriz);
 
         // libera a memória da matriz
         for (int i = 0; i < config.LINHAS; i++){
