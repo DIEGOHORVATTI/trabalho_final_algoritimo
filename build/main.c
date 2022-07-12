@@ -11,8 +11,9 @@
 #include "../controller/verified_structure.c"   // verificar se estrutura e dados existe e converter os types 
 #include "../controller/verified_file_config.c" // verificar se arquivo de configuração existe
 #include "../controller/fill_file.c"            // preencher arquivo com dados da matriz de fill_matriz.c        
-#include "../controller/fill_matriz.c"          // preencher matriz com dados de DNA aleatório e devolver a matriz para fill_file.c
 #include "../controller/isSimian.c"             // verifica ocorrencias de DNAs 
+#include "../controller/read_file.c"            // ler dados do arquivo e atualizar a matriz com os mesmos
+#include "../controller/fill_matriz.c"          // preencher matriz com dados de DNA aleatório e devolver a matriz para fill_file.c
 
 //Front end´s
 #include "../view/debug.c"                      // debug

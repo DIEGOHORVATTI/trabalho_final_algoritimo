@@ -28,14 +28,3 @@ void escreverFile(char **matriz){
   free((void*) config.ARQUIVO_TXT);
   fclose(arquivo);
 }
-
-char lerFile(){
-
-  s_configuration config = Config();
-  FILE *arquivo = fopen(config.ARQUIVO_TXT, "r");
-
-  while (!(feof(arquivo))){
-    printf("%c", fgetc(arquivo));
-  }
-  fclose(arquivo);
-}

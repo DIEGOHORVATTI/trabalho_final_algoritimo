@@ -47,7 +47,7 @@ void fillMatriz(){
         }
 
         escreverFile(matriz);
-        lerFile();
+        lerFile(matriz);
 
         // libera a memória da matriz
         for (int i = 0; i < config.LINHAS; i++){
