@@ -20,7 +20,7 @@
 
 int main(){
     
-   //all_unit_testing();                        // testes unitários de debug
+   all_unit_testing();                          // testes unitários de debug
    view_index();                                // visualização geral
 
     return (0);
