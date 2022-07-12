@@ -1,12 +1,3 @@
-/*
-  w  -> Escrita (cria o arquivo caso ele não exista)
-  r  -> leitura
-  a  -> anexar (adicionar informação ao final de um arquivo que já existe)
-  r+ -> leitura e escrita
-  w+ -> leitura e escrita (apaga o conteúdo caso o arquivo exista)
-  a+ -> leitura e escrita (adiciona ao final do arquivo)
-*/
-
 char dnaLetra(){
 
   struct timeval tv; // tv -> timeval
@@ -30,16 +21,15 @@ void fillMatriz(){
     s_configuration config = Config();
 
     FILE *arquivo = fopen(config.ARQUIVO_TXT, "w+");
+    
+    // aloca um vetor de config.LINHAS ponteiros para linhas
+    char **matriz;
+    matriz = malloc(config.LINHAS * sizeof(char*));
 
-    // matriz dinamica
-      // aloca um vetor de config.LINHAS ponteiros para linhas
-      char **matriz;
-      matriz = malloc(config.LINHAS * sizeof(char*));
-
-      // aloca cada uma das linhas (vetores de config.COLUNAS inteiros)
-      for (int i = 0; i < config.LINHAS; i++){
-        matriz[i] = malloc(config.COLUNAS * sizeof(char));
-      }
+    // aloca cada uma das linhas (vetores de config.COLUNAS inteiros)
+    for (int i = 0; i < config.LINHAS; i++){
+      matriz[i] = malloc(config.COLUNAS * sizeof(char));
+    }
 
     //verifica de matriz foi alocada
     if(matriz != NULL){
@@ -57,13 +47,14 @@ void fillMatriz(){
         }
 
         escreverFile(matriz);
-        lerFile(matriz);
+        lerFile();
 
         // libera a memória da matriz
         for (int i = 0; i < config.LINHAS; i++){
           free(matriz[i]);
         }
         free(matriz);
+        free((void*) config.ARQUIVO_TXT);
 
       }else{ printf("\n%s Erro ao abrir o arquivo 'matriz.txt'%s\n", __COLOR_RED, __COLOR_FIM ); }
     }else{ printf("\n%s Erro ao alocar matriz dinamica 'matriz' %s\n", __COLOR_RED, __COLOR_FIM ); }

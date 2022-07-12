@@ -1,5 +1,3 @@
-#include "../model/bd.c"
-
 // atoi   -> inteiro, int
 // strdup -> string, *char
 

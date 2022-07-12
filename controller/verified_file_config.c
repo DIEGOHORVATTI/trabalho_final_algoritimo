@@ -1,5 +1,3 @@
-#include "./verified_structure.c"
-
 // Verificar se arquivo de configuração existe com a função ini_parse da API do inih.c 
 // Caso exista retorne a struct 'config' de configuração para arquivo alvo 
 

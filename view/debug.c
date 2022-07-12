@@ -1,7 +1,3 @@
-#include "../controller/verified_file_config.c"
-#include "../controller/fill_file.c"
-#include "../controller/fill_matriz.c"
-
 void unit_testing_1(){
   s_configuration config = Config();
 
@@ -20,6 +16,5 @@ void unit_testing_1(){
 
 void all_unit_testing(){
 
-  //unit_testing_1();
-  fillMatriz();
+  unit_testing_1();
 }
