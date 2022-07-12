@@ -3,8 +3,7 @@
 #### Professor: Manasses ribeiro
 
 <br/>
-<a  align="center" href="./relatorio.md"><hr/><center>Relatório</center><hr/></a>
-<br/>
+<a  align="center" href="./relatorio.md"><hr/><center align="center">Relatório</center><hr/></a>
 
 Desafio de Programação
 
