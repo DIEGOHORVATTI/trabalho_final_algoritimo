@@ -72,27 +72,28 @@ int verificaHorizontal(char *stringPercorrido){
 
 int verificaVertical(char *stringPercorrido){
 
-  char *horizontalA = strstr(stringPercorrido, A());
-  if( horizontalA ){
-    printf(" ocorrencia horizontal: %s\n", A());
+  char *verticalA = strstr(stringPercorrido, A());
+  if (verticalA)
+  {
+    printf(" ocorrencia vertical %s\n", A());
     return(1);
   }
 
-    char *horizontalT = strstr(stringPercorrido, T());
-  if( horizontalT ){
-    printf(" ocorrencia horizontal: %s\n", T());
+  char *verticalT = strstr(stringPercorrido, T());
+  if( verticalT ){
+    printf(" ocorrencia vertical %s\n", T());
     return(1);
   }
 
-  char *horizontalC = strstr(stringPercorrido, C());
-  if( horizontalC ){
-    printf(" ocorrencia horizontal: %s\n", C());
+  char *verticalC = strstr(stringPercorrido, C());
+  if( verticalC ){
+    printf(" ocorrencia vertical %s\n", C());
     return(1);
   }
 
-  char *horizontalG = strstr(stringPercorrido, G());
-  if( horizontalG ){
-    printf(" ocorrencia horizontal: %s\n", G());
+  char *verticalG = strstr(stringPercorrido, G());
+  if( verticalG ){
+    printf(" ocorrencia vertical %s\n", G());
     return(1);
   }
 }
@@ -133,29 +134,28 @@ int isSimian(char *dna){
 
 
   for(int j = 0; j < config.COLUNAS; j++){
-    for(int i = 0; i < config.LINHAS; i++){
 
-      // alocação do vetor da matriz
-      char *stringPercorrido = calloc( config.LINHAS, sizeof(char));
+    // alocação do vetor da matriz
+    char *stringPercorrido = calloc( config.LINHAS, sizeof(char));
 
-      if(stringPercorrido){
-        
-        // atualizar vetor com linha da matriz
-        for (int y = 0; y < config.LINHAS; y++){
-          *(stringPercorrido + y) = *(*(matriz + y) + i);
+    if(stringPercorrido){
+      
+      printf("\n");
+      // atualizar vetor com linhas horizontais da matriz
+      for (int i=0; i < config.LINHAS; i++) *(stringPercorrido + i) = *(*(matriz + i) + j);
+      if ( verificaHorizontal(stringPercorrido) != 0){
+
+        // atualizar vetor com linhas verticais da matriz
+        for (int i=0; i < config.LINHAS; i++) *(stringPercorrido + i) = *(*(matriz + j) + i);
+        if ( verificaVertical(stringPercorrido) != 0){
         }
-        
-        
-        if ( verificaHorizontal(stringPercorrido) != 0){
-          //if ( verificaVertical(stringPercorrido) != 0){
-          //}
-        }
-       
 
-        free(stringPercorrido);
-      }else{ printf("\n%s Erro ao alocar matriz dinamica 'matriz' %s\n", __COLOR_RED, __COLOR_FIM ); }
+      }
+      printf("\n");
 
-    }
+      free(stringPercorrido);
+    }else{ printf("\n%s Erro ao alocar matriz dinamica 'matriz' %s\n", __COLOR_RED, __COLOR_FIM ); }
+
   }
   
   // libera a memória da matriz
