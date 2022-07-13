@@ -125,9 +125,17 @@ for i in "$@"; do
 		;;
 		--start)
 			fStart
-		;;
-		*)
-			fHelp
-		;;
+			read -p ' Nova verificação[ y / n]: ' teclado
+			case $teclado in
+				y | Y)
+					./make.sh --start
+				;;
+				n | N)
+					exit
+				;;
+				*)
+					exit
+				;;
+			esac
 	esac
 done
