@@ -92,81 +92,9 @@ int isSimian(char *dna){
         y++;
       }
     }
+
+    debug(matriz);
     
-
-    
-      printf("\n");
-      // printa matriz
-      printf("\n matriz\n");
-      printf("\n _____________________________\n");
-      for(int j = 0; j < config.COLUNAS ; j++){
-        for(int i = 0; i < config.LINHAS ; i++){
-          printf(" %c", *(*(matriz + i) + j) );
-        }printf("\n");
-      }
-
-      // printa horizontal
-      printf("\n Horizontal\n");
-      for(int j = 0; j < config.COLUNAS ; j++){
-        for(int i = 0; i < config.LINHAS ; i++){
-          printf(" %c", *(*(matriz + i) + j));
-        }
-        printf("\n");
-      }
-      printf("\n");
-
-      // printa vertical
-      printf("\n Vertical\n");
-      for(int j = 0; j < config.COLUNAS ; j++){
-        for(int i = 0; i < config.LINHAS ; i++){
-          printf(" %c", *(*(matriz + j) + i));
-        }
-        printf("\n");
-      }
-      printf("\n");
-
-      // printa diagonal principal superior
-      printf("\n Diagonal principal superior\n");
-      for(int j = 0; j < config.COLUNAS ; j++){
-        for(int i = 0; i < config.LINHAS ; i++){
-          printf(" %c", *(*(matriz + i) + (i-j)) );
-        }
-        printf("\n");
-      }
-      printf("\n");
-
-      // printa diagonal principal inferior
-      printf("\n Diagonal principal inferior\n");
-      for(int j = 0; j < config.COLUNAS ; j++){
-        for(int i = 0; i < config.LINHAS-1 ; i++){
-          printf(" %c", *(*(matriz + i) + (i+j)) );
-        }
-        printf("\n");
-      }
-      printf("\n");
-
-      // printa diagonais segundaria superior
-      printf("\n Diagonal segundaria superior\n");
-      for(int j = config.COLUNAS-1; j >= 0  ; j--){
-        for(int i=config.LINHAS-1; i >= 0  ; i--){
-          printf(" %c", *(*(matriz + i) + (j-i)));
-        }
-        printf("\n");
-      }
-      printf("\n");
-
-      // printa diagonais segundaria inferior
-      printf("\n Diagonal segundaria inferior\n");
-      for(int j = config.COLUNAS-1; j >= 0  ; j--){
-        for(int i=(config.LINHAS-1)-1; i >= 0  ; i--){
-          printf(" %c", *(*(matriz + i) + (j+i)));
-        }
-        printf("\n");
-      }
-
-    printf("\n"); 
-   
-
     }else{ printf("\n%s Erro ao alocar matriz dinamica 'matriz' %s\n", __COLOR_RED, __COLOR_FIM ); }
   
     // alocação do vetor da matriz
