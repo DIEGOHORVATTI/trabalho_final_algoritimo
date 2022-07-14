@@ -93,14 +93,36 @@ int isSimian(char *dna){
       }
     }
     
-    // printa matriz 
-    for(int j = 0; j < config.COLUNAS ; j++){
-      for(int i = 0; i < config.LINHAS ; i++){
-        printf(" %c", *(*(matriz + i) + j) );
-      }printf("\n");
-    }
 
-    /* 
+    
+      printf("\n");
+      // printa matriz
+      printf("\n matriz\n");
+      printf("\n _____________________________\n");
+      for(int j = 0; j < config.COLUNAS ; j++){
+        for(int i = 0; i < config.LINHAS ; i++){
+          printf(" %c", *(*(matriz + i) + j) );
+        }printf("\n");
+      }
+
+      // printa horizontal
+      printf("\n Horizontal\n");
+      for(int j = 0; j < config.COLUNAS ; j++){
+        for(int i = 0; i < config.LINHAS ; i++){
+          printf(" %c", *(*(matriz + i) + j));
+        }
+        printf("\n");
+      }
+      printf("\n");
+
+      // printa vertical
+      printf("\n Vertical\n");
+      for(int j = 0; j < config.COLUNAS ; j++){
+        for(int i = 0; i < config.LINHAS ; i++){
+          printf(" %c", *(*(matriz + j) + i));
+        }
+        printf("\n");
+      }
       printf("\n");
 
       // printa diagonal principal superior
@@ -143,7 +165,7 @@ int isSimian(char *dna){
       }
 
     printf("\n"); 
-    */
+   
 
     }else{ printf("\n%s Erro ao alocar matriz dinamica 'matriz' %s\n", __COLOR_RED, __COLOR_FIM ); }
   
