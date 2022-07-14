@@ -102,11 +102,20 @@ int isSimian(char *dna){
     
   }else{ printf("\n%s Erro ao alocar matriz dinamica 'matriz' %s\n", __COLOR_RED, __COLOR_FIM ); }
 
+  printf("\n ");
   //VERIFiCAÇÃO DE OCORRENCIAS
   for(int j = 0; j < config.COLUNAS; j++){
 
     // alocação do vetor da matriz
     char *stringPercorrido = calloc( config.LINHAS, sizeof(char));
+    
+    // printa matriz 
+    for(int j = 0; j < config.COLUNAS ; j++){
+      for(int i = 0; i < config.LINHAS ; i++){
+        printf(" %c", *(*(matriz + i) + j) );
+      }printf("\n");
+    }
+    
 
     if(stringPercorrido){
       // atualizar vetor com linhas horizontais da matriz
@@ -117,8 +126,17 @@ int isSimian(char *dna){
           if ( verificacao(stringPercorrido) == 1){ printf(" -> Vertical"); }
             // atualizar vetor com linhas verticais da matriz
             else{
+              for (int i=0; i < config.LINHAS; i++) *(stringPercorrido + i) = *(*(matriz + i) + i);
               if ( verificacao(stringPercorrido) == 1) printf(" -> Diagonal Princiapal"); }
                 // atualizar vetor com linhas diagonais principais da matriz
+                /* else{
+                  if( verificacao(stringPercorrido) == 1){  printf(" ocorrencia Diagonal Segundaria: "); }
+                  else{
+                    for (int i=0; i < config.LINHAS; i++) *(stringPercorrido + i) = *(*(matriz + i) + ((config.LINHAS - 1) - i));
+                  }
+                  
+                } */
+                
             }
 
       free(stringPercorrido);
