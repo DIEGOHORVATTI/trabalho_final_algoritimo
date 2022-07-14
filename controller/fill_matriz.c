@@ -20,7 +20,7 @@ void fillMatriz(){
 
     s_configuration config = Config();
 
-    FILE *arquivo = fopen(config.ARQUIVO_TXT, "w+");
+    FILE *arquivo = fopen(config.ARQUIVO_TXT, "r");
     
     // aloca um vetor de config.LINHAS ponteiros para linhas
     char **matriz;
@@ -46,7 +46,7 @@ void fillMatriz(){
           }
         }
 
-        escreverFile(matriz);
+        //escreverFile(matriz);
 
         // libera a memória da matriz
         for (int i = 0; i < config.LINHAS; i++){
