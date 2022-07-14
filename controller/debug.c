@@ -2,11 +2,9 @@ void debug(char **matriz){
   s_configuration config = Config();
 
     // printa matriz
-    printf("\n Matriz");
-    printf("\n%s ────────────────────────────%s\n", __COLOR_LIGHT_PURPLE, __COLOR_FIM);
     for(int j = 0; j < config.COLUNAS ; j++){
       for(int i = 0; i < config.LINHAS ; i++){
-        printf(" %c", *(*(matriz + i) + j));
+        printf("%s %c%s", __COLOR_LIGHT_GREEN, *(*(matriz + i) + j), __COLOR_FIM);
       }printf("\n");
     }
 }

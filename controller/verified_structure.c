@@ -19,6 +19,8 @@ static int handler(void* USER, const char* section, const char* name, const char
 
     else if(MATCH("USER", "OCORRENCIA")){ pconfig->OCORRENCIA = atoi(value); }
 
+    else if(MATCH("USER", "ALEATORIO")){ pconfig->ALEATORIO = strdup(value); }
+
     else if (MATCH("USER", "ARQUIVO_TXT")){ pconfig->ARQUIVO_TXT = strdup(value); } 
     
     else{ return(0); }

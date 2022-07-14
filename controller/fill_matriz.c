@@ -45,8 +45,9 @@ void fillMatriz(){
             *(*(matriz + i) + j) = dnaLetra();
           }
         }
-
-        //escreverFile(matriz);
+        
+        //verificar se é para criar arquivo em C aleatório
+        strcmp(config.ALEATORIO, "true") == 0 ? escreverFile(matriz) : printf("");
 
         // libera a memória da matriz
         for (int i = 0; i < config.LINHAS; i++){

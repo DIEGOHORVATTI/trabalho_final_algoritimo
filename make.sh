@@ -33,6 +33,7 @@ function fHelp(){
 	echo -e "│                                       │"
 	echo -e "│ [ user ]                              │"
 	echo -e "│ --start.......: iniciar compilação    │"
+	echo -e "│ --config......: arquivo configuração  │"
 	echo -e "│                                       │"
 	echo -e "│ [ dependencies ]                      │"
 	echo -e "│ 'gcc or g++', 'cppcheck', 'wget'      │"
@@ -123,9 +124,14 @@ for i in "$@"; do
 		--git-date)
 			fGitAll
 		;;
+		--config)
+			nano ./config.ini
+			clear
+		;;
 		--start)
 			fStart
-			read -p ' Nova verificação[ y / n]: ' teclado
+			echo -e " Nova verificação [ \033[0;34m"Y"\033[0m / \033[0;31m"N"\033[0m ]"
+			read -p " >> " teclado
 			case $teclado in
 				y | Y)
 					./make.sh --start
