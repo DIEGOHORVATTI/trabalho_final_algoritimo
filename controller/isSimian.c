@@ -102,10 +102,52 @@ int isSimian(char *dna){
 
     printf("\n");
 
-      // printa diagonais 
-      for(int i = 0; i < config.LINHAS ; i++){
-        printf(" %c", *(*(matriz + i) + i) );
+      // printa diagonal principal superior
+      printf("\n Diagonal principal superior\n");
+      for(int j = 0; j < config.COLUNAS ; j++){
+        for(int i = 0; i < config.LINHAS ; i++){
+          printf(" %c", *(*(matriz + i) + (i-j)) );
+        }
+        printf("\n");
       }
+      printf("\n");
+
+      // printa diagonal principal inferior
+      printf("\n Diagonal principal inferior\n");
+      for(int j = 0; j < config.COLUNAS ; j++){
+        for(int i = 0; i < config.LINHAS-1 ; i++){
+          printf(" %c", *(*(matriz + i) + (i+j)) );
+        }
+        printf("\n");
+      }
+      printf("\n");
+
+      // printa diagonais segundaria superior
+      printf("\n Diagonal segundaria superior\n");
+      for(int j = config.COLUNAS-1; j >= 0  ; j--){
+        for(int i=config.LINHAS-1; i >= 0  ; i--){
+          printf(" %c", *(*(matriz + i) + (j-i)));
+        }
+        printf("\n");
+      }
+      printf("\n");
+
+      // printa diagonais segundaria inferior
+      printf("\n Diagonal segundaria inferior\n");
+      for(int j = config.COLUNAS-1; j >= 0  ; j--){
+        for(int i=(config.LINHAS-1)-1; i >= 0  ; i--){
+          printf(" %c", *(*(matriz + i) + (j+i)));
+        }
+        printf("\n");
+      }
+      printf("\n");
+      
+      /* 
+      for (int i=3-1; i >= 0 ; i--){       
+        printf(" %d", mat_1[i][(3-1)-i]);
+        soma += mat_1[i][(config.LINHAS-1)-i];
+        i == 0 ? printf("\n soma diagonal segundaria: %d \n\n", soma) : printf("");
+      } */
 
     printf("\n");
 
@@ -113,32 +155,45 @@ int isSimian(char *dna){
   
   //VERIFiCAÇÃO DE OCORRENCIAS
   for(int j = 0; j < config.COLUNAS; j++){
-
     // alocação do vetor da matriz
     char *stringPercorrido = calloc( config.LINHAS, sizeof(char));
 
     if(stringPercorrido){
       // atualizar vetor com linhas horizontais da matriz
       for (int i=0; i < config.LINHAS; i++) *(stringPercorrido + i) = *(*(matriz + i) + j);
-      if ( verificacao(stringPercorrido) == 1){ printf(" -> horizontal");}
+      if ( verificacao(stringPercorrido) == 1) printf(" -> horizontal");
         else{
           for (int i=0; i < config.LINHAS; i++) *(stringPercorrido + i) = *(*(matriz + j) + i);
-          if ( verificacao(stringPercorrido) == 1){ printf(" -> Vertical"); }
+          if ( verificacao(stringPercorrido) == 1) printf(" -> Vertical");
             // atualizar vetor com linhas verticais da matriz
             else{
               for (int i=0; i < config.LINHAS; i++) *(stringPercorrido + i) = *(*(matriz + i) + i);
-              if ( verificacao(stringPercorrido) == 1) printf(" -> Diagonal Princiapal"); }
-                /* 
-                atualizar vetor com linhas diagonais principais da matriz
+              if ( verificacao(stringPercorrido) == 1) printf(" -> Diagonal Princiapal");
+                
+                //atualizar vetor com linhas diagonais da matriz
                 else{
-                  if( verificacao(stringPercorrido) == 1){  printf(" ocorrencia Diagonal Segundaria: "); }
-                  else{
-                    for (int i=0; i < config.LINHAS; i++) *(stringPercorrido + i) = *(*(matriz + i) + ((config.LINHAS - 1) - i));
+                  // atualizar vetor com linhas diagonais superior triangular da matriz
+                  for(int j = 0; j < config.COLUNAS ; j++){
+                    for(int i = 0; i < config.LINHAS ; i++){
+                      *(stringPercorrido + i) = *(*(matriz + i) + i-j);
+                    }
                   }
+
+                  // atualizar vetor com linhas diagonais inferior triangular da matriz
+                  for(int j = 0; j < config.COLUNAS ; j++){
+                    for(int i = 0; i < config.LINHAS-1 ; i++){
+                      *(stringPercorrido + i) = *(*(matriz + i) + i+j);
+                    }
+                  }
+                  if( verificacao(stringPercorrido) == 1){  printf(" ocorrencia Diagonal Segundaria: "); }
+                  /* else{
+                    for (int i=0; i < config.LINHAS; i++) *(stringPercorrido + i) = *(*(matriz + i) + ((config.LINHAS - 1) - i));
+                  } */
                   
-                } */
+                }
                 
             }
+        }
 
       free(stringPercorrido);
     }else{ printf("\n%s Erro ao alocar matriz dinamica 'matriz' %s\n", __COLOR_RED, __COLOR_FIM ); }
