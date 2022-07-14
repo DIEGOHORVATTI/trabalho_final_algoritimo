@@ -43,61 +43,19 @@ char* G(){
 }
 
 
-int verificaHorizontal(char *stringPercorrido){
+int verificacao(char *stringPercorrido){
+  char *stringPercorrida_A = strstr(stringPercorrido, A());
+  if( stringPercorrida_A ) return(1);
 
-  char *horizontalA = strstr(stringPercorrido, A());
-  if( horizontalA ){
-    printf(" ocorrencia horizontal: %s\n", A());
-    return(1);
-  }
+  char *stringPercorrida_T = strstr(stringPercorrido, T());
+  if( stringPercorrida_T ) return(1);
 
-    char *horizontalT = strstr(stringPercorrido, T());
-  if( horizontalT ){
-    printf(" ocorrencia horizontal: %s\n", T());
-    return(1);
-  }
+  char *stringPercorrida_C = strstr(stringPercorrido, C());
+  if( stringPercorrida_C ) return(1);
 
-  char *horizontalC = strstr(stringPercorrido, C());
-  if( horizontalC ){
-    printf(" ocorrencia horizontal: %s\n", C());
-    return(1);
-  }
-
-  char *horizontalG = strstr(stringPercorrido, G());
-  if( horizontalG ){
-    printf(" ocorrencia horizontal: %s\n", G());
-    return(1);
-  }
+  char *stringPercorrida_G = strstr(stringPercorrido, G());
+  if( stringPercorrida_G ) return(1);
 }
-
-int verificaVertical(char *stringPercorrido){
-
-  char *verticalA = strstr(stringPercorrido, A());
-  if (verticalA)
-  {
-    printf(" ocorrencia vertical %s\n", A());
-    return(1);
-  }
-
-  char *verticalT = strstr(stringPercorrido, T());
-  if( verticalT ){
-    printf(" ocorrencia vertical %s\n", T());
-    return(1);
-  }
-
-  char *verticalC = strstr(stringPercorrido, C());
-  if( verticalC ){
-    printf(" ocorrencia vertical %s\n", C());
-    return(1);
-  }
-
-  char *verticalG = strstr(stringPercorrido, G());
-  if( verticalG ){
-    printf(" ocorrencia vertical %s\n", G());
-    return(1);
-  }
-}
-
 
 
 int isSimian(char *dna){
@@ -143,11 +101,17 @@ int isSimian(char *dna){
       
       // atualizar vetor com linhas horizontais da matriz
       for (int i=0; i < config.LINHAS; i++) *(stringPercorrido + i) = *(*(matriz + i) + j);
-      if ( verificaHorizontal(stringPercorrido) != 0){
+      if ( verificacao(stringPercorrido) != 0){
 
         // atualizar vetor com linhas verticais da matriz
         for (int i=0; i < config.LINHAS; i++) *(stringPercorrido + i) = *(*(matriz + j) + i);
-        if ( verificaVertical(stringPercorrido) != 0){
+        if ( verificacao(stringPercorrido) != 0){
+          
+          // atualizar vetor com linhas diagonais principais da matriz
+          for (int i=0; i < config.LINHAS; i++) *(stringPercorrido + i) = *(*(matriz + i) + i);
+          if ( verificacao(stringPercorrido) != 0){
+          }
+        
         }
 
       }
