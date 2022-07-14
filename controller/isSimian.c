@@ -147,7 +147,6 @@ int isSimian(char *dna){
 
     }else{ printf("\n%s Erro ao alocar matriz dinamica 'matriz' %s\n", __COLOR_RED, __COLOR_FIM ); }
   
-  //VERIFiCAÇÃO DE OCORRENCIAS
     // alocação do vetor da matriz
     char *stringPercorrido          = calloc( config.LINHAS, sizeof(char));
     char *stringPercorrido_superior = calloc( config.LINHAS, sizeof(char) );
@@ -158,48 +157,43 @@ int isSimian(char *dna){
       for(int j = 0; j < config.COLUNAS ; j++)
         for (int i=0; i < config.LINHAS; i++)
           *(stringPercorrido + i) = *(*(matriz + i) + j);
-      if ( verificacao(stringPercorrido) == 1) printf(" -> horizontal");
+            if ( verificacao(stringPercorrido) == 1) printf(" -> horizontal");
         
         else{
           // atualizar vetor com linhas verticais da matriz
-          for (int i=0; i < config.LINHAS; i++) *(stringPercorrido + i) = *(*(matriz + j) + i);
-          if ( verificacao(stringPercorrido) == 1) printf(" -> Vertical");
+          for (int j = 0; j < config.COLUNAS; j++)
+            for (int i = 0; i < config.LINHAS; i++)
+              *(stringPercorrido + i) = *(*(matriz + j) + i);
+                if ( verificacao(stringPercorrido) == 1) printf(" -> Vertical");
             
-            else{
-              // atualizar vetor com linhas diagonais superior triangular da matriz
-              for(int j = 0; j < config.COLUNAS ; j++){
-                for(int i = 0; i < config.LINHAS ; i++){
-                  *(stringPercorrido_superior + i) = *(*(matriz + i) + i-j);
-                }
-              }
+          //atualizar vetor com linhas diagonais da matriz
+          else{
+            // atualizar vetor com linhas diagonais superior triangular da matriz
+            for(int j = 0; j < config.COLUNAS ; j++)
+              for(int i = 0; i < config.LINHAS ; i++)
+                *(stringPercorrido_superior + i) = *(*(matriz + i) + i-j);
 
-              // atualizar vetor com linhas diagonais inferior triangular da matriz
-              for(int j = 0; j < config.COLUNAS ; j++){
-                for(int i = 0; i < config.LINHAS-1 ; i++){
-                  *(stringPercorrido_inferior + i) = *(*(matriz + i) + i+j);
-                }
-              }
-              if ( verificacao(stringPercorrido_superior) == 1 || verificacao(stringPercorrido_inferior) == 1) printf(" -> Diagonal Princiapal");
-                //atualizar vetor com linhas diagonais da matriz
-                else{
-                  // atualizar vetor com linhas diagonais segundaria superior
-                  for(int j = config.COLUNAS-1; j >= 0  ; j--){
-                    for(int i=config.LINHAS-1; i >= 0  ; i--){
-                      *(stringPercorrido_superior + i) = *(*(matriz + i) + (j - i));
-                    }
-                  }
+            // atualizar vetor com linhas diagonais inferior triangular da matriz
+            for(int j = 0; j < config.COLUNAS ; j++)
+              for(int i = 0; i < config.LINHAS-1 ; i++)
+                *(stringPercorrido_inferior + i) = *(*(matriz + i) + i+j);
+                  if ( verificacao(stringPercorrido_superior) == 1 || verificacao(stringPercorrido_inferior) == 1) printf(" -> Diagonal Princiapal");
+              
+              else{
+                // atualizar vetor com linhas diagonais segundaria superior
+                for(int j = config.COLUNAS-1; j >= 0  ; j--)
+                  for(int i=config.LINHAS-1; i >= 0  ; i--)
+                    *(stringPercorrido_superior + i) = *(*(matriz + i) + (j - i));
 
-                  // atualizar vetor com linhas diagonais segundaria inferior
-                  for(int j = config.COLUNAS-1; j >= 0  ; j--){
-                    for(int i=(config.LINHAS-1)-1; i >= 0  ; i--){
-                      *(stringPercorrido_inferior + i) = *(*(matriz + i) + (j + i));
-                    }
-                  }
-                  if( verificacao(stringPercorrido_superior) == 1 || verificacao(stringPercorrido_inferior) == 1){  printf(" -> Diagonal Segundaria: "); }
-                  
-                }
+                // atualizar vetor com linhas diagonais segundaria inferior
+                for(int j = config.COLUNAS-1; j >= 0  ; j--)
+                  for(int i=(config.LINHAS-1)-1; i >= 0  ; i--)
+                    *(stringPercorrido_inferior + i) = *(*(matriz + i) + (j + i));
+                      if( verificacao(stringPercorrido_superior) == 1 || verificacao(stringPercorrido_inferior) == 1){  printf(" -> Diagonal Segundaria: "); }
                 
-            }
+              }
+                  
+          }
         }
 
       free(stringPercorrido);
