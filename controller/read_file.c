@@ -11,7 +11,7 @@ int lerFile(){
   //verificar se vetor DNA foi alocado
   if ( vetorDNA ){
 
-    //copiar todo o conteudo doa rquivo .txt para o vetor vetorDNA 
+    // copiar todo o conteudo do arquivo.txt para o vetor dinamico vetorDNA 
     for( int i=0; !(feof(arquivo)); i++ ){
       fscanf(arquivo, "%s", &vetorDNA[i]);
     }
