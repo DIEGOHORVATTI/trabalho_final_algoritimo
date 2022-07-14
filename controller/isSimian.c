@@ -45,15 +45,19 @@ char* G(){
 
 int verificacao(char *stringPercorrido){
   char *stringPercorrida_A = strstr(stringPercorrido, A());
+  printf("%s", A());
   if( stringPercorrida_A ) return(1);
 
   char *stringPercorrida_T = strstr(stringPercorrido, T());
+  printf("%s", T());
   if( stringPercorrida_T ) return(1);
 
   char *stringPercorrida_C = strstr(stringPercorrido, C());
+  printf("%s", C());
   if( stringPercorrida_C ) return(1);
 
   char *stringPercorrida_G = strstr(stringPercorrido, G());
+  printf("%s", G());
   if( stringPercorrida_G ) return(1);
 }
 
@@ -101,19 +105,28 @@ int isSimian(char *dna){
       
       // atualizar vetor com linhas horizontais da matriz
       for (int i=0; i < config.LINHAS; i++) *(stringPercorrido + i) = *(*(matriz + i) + j);
-      if ( verificacao(stringPercorrido) != 0){
+      if ( verificacao(stringPercorrido) == 1){ printf(" ocorrencia horizontal: ");
+        else{
 
-        // atualizar vetor com linhas verticais da matriz
-        for (int i=0; i < config.LINHAS; i++) *(stringPercorrido + i) = *(*(matriz + j) + i);
-        if ( verificacao(stringPercorrido) != 0){
-          
-          // atualizar vetor com linhas diagonais principais da matriz
-          for (int i=0; i < config.LINHAS; i++) *(stringPercorrido + i) = *(*(matriz + i) + i);
-          if ( verificacao(stringPercorrido) != 0){
+          if ( verificacao(stringPercorrido) == 1){ printf(" ocorrencia Vertical: ");
+            else{
+              printf(" ocorrencia Diagonal Princial: ");
+              // atualizar vetor com linhas verticais da matriz
+              for (int i=0; i < config.LINHAS; i++) *(stringPercorrido + i) = *(*(matriz + j) + i);
+              if ( verificacao(stringPercorrido) != 1) printf(" ocorrencia Vertical: %s\n", G());
+              if ( verificacao(stringPercorrido) != 0){
+                
+                // atualizar vetor com linhas diagonais principais da matriz
+                for (int i=0; i < config.LINHAS; i++) *(stringPercorrido + i) = *(*(matriz + i) + i);
+                if ( verificacao(stringPercorrido) != 1) printf(" ocorrencia horizontal: %s\n", G());
+                if ( verificacao(stringPercorrido) != 0){
+                }
+              
+              }
+            }
           }
-        
+          
         }
-
       }
 
       free(stringPercorrido);
