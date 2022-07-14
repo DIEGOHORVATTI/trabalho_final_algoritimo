@@ -72,3 +72,6 @@ O que entregar
 - Observações:
   * Tenha em mente que faremos uma série de testes com matrizes válidas e inválidas.
   * Considere a performance do algoritmo e o tempo de resposta da aplicação.
+
+<br/>
+<img src="./src/debug.png" width="100%" />
