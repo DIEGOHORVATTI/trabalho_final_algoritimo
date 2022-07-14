@@ -36,7 +36,8 @@ function fHelp(){
 	echo -e "│ --config......: arquivo configuração  │"
 	echo -e "│                                       │"
 	echo -e "│ [ dependencies ]                      │"
-	echo -e "│ 'gcc or g++', 'cppcheck', 'wget'      │"
+	echo -e "│ obrigratório: 'gcc or g++'            │"
+	echo -e "│ optativa: 'cppcheck', 'wget', 'git'   │"
 	echo -e "│                                       │"
 	echo -e "│                                       │"
 	echo -e "│ used: make --start                    │"
@@ -103,6 +104,15 @@ function fStart(){
 	echo -e "\n\n───────────────────────────────────────\n"
 }
 
+# Iniciar compilação
+function fDebug(){
+	clear && 
+	cppcheck ./build/main.c && 
+	echo -e "\n───────────────────────────────────────\n" && 
+	gcc ./build/main.c -o ./bin/run.bin && ./bin/run.bin && 
+	echo -e "\n\n───────────────────────────────────────\n"
+}
+
 # Swith case de opções de flags
 for i in "$@"; do
 	case $i in
@@ -127,6 +137,22 @@ for i in "$@"; do
 		--config)
 			nano ./config.ini
 			clear
+		;;
+		--debug)
+			fDebug
+			echo -e " Nova deburação [ \033[0;34m"Y"\033[0m / \033[0;31m"N"\033[0m ]"
+			read -p " >> " teclado
+			case $teclado in
+				y | Y)
+					./make.sh --debug
+				;;
+				n | N)
+					exit
+				;;
+				*)
+					exit
+				;;
+			esac
 		;;
 		--start)
 			fStart

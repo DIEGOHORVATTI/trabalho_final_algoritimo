@@ -56,7 +56,13 @@ void fillMatriz(){
         free(matriz);
         free((void*) config.ARQUIVO_TXT);
 
-      }else{ printf("\n%s Erro ao abrir o arquivo 'matriz.txt'%s\n", __COLOR_RED, __COLOR_FIM ); }
+      }else{
+        //cria o arquivo .txt caso ele não exista
+        printf("\n%s Erro ao abrir o arquivo '%s'%s\n", __COLOR_RED, config.ARQUIVO_TXT, __COLOR_FIM);
+        FILE *file_create = fopen(config.ARQUIVO_TXT, "w");
+        fclose(file_create);
+        printf("\n%s Arquivo '%s' criado%s%s\n", __COLOR_LIGHT_BLUE, config.ARQUIVO_TXT, __COLOR_FIM);
+        }
     }else{ printf("\n%s Erro ao alocar matriz dinamica 'matriz' %s\n", __COLOR_RED, __COLOR_FIM ); }
 
     fclose(arquivo);
