@@ -140,14 +140,6 @@ int isSimian(char *dna){
         }
         printf("\n");
       }
-      printf("\n");
-      
-      /* 
-      for (int i=3-1; i >= 0 ; i--){       
-        printf(" %d", mat_1[i][(3-1)-i]);
-        soma += mat_1[i][(config.LINHAS-1)-i];
-        i == 0 ? printf("\n soma diagonal segundaria: %d \n\n", soma) : printf("");
-      } */
 
     printf("\n");
 
@@ -186,9 +178,23 @@ int isSimian(char *dna){
                     }
                   }
                   if( verificacao(stringPercorrido) == 1){  printf(" ocorrencia Diagonal Segundaria: "); }
-                  /* else{
-                    for (int i=0; i < config.LINHAS; i++) *(stringPercorrido + i) = *(*(matriz + i) + ((config.LINHAS - 1) - i));
-                  } */
+                  else{
+                    // atualizar vetor com linhas diagonais segundaria superior
+                    printf("\n Diagonal segundaria superior\n");
+                    for(int j = config.COLUNAS-1; j >= 0  ; j--){
+                      for(int i=config.LINHAS-1; i >= 0  ; i--){
+                        *(stringPercorrido + i) = *(*(matriz + i) + (j - i));
+                      }
+                    }
+
+                    // atualizar vetor com linhas diagonais segundaria inferior
+                    printf("\n Diagonal segundaria inferior\n");
+                    for(int j = config.COLUNAS-1; j >= 0  ; j--){
+                      for(int i=(config.LINHAS-1)-1; i >= 0  ; i--){
+                        *(stringPercorrido + i) = *(*(matriz + i) + (j + i));
+                      }
+                    }
+                  }
                   
                 }
                 
