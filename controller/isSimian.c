@@ -94,7 +94,8 @@ int isSimian(char *dna){
     }
 
     debug(matriz);
-    
+    debugFilhos(matriz);
+
     }else{ printf("\n%s Erro ao alocar matriz dinamica 'matriz' %s\n", __COLOR_RED, __COLOR_FIM ); }
   
     // alocação do vetor da matriz
