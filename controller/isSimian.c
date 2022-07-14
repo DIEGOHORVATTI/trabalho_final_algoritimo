@@ -131,12 +131,12 @@ int isSimian(char *dna){
                 // atualizar vetor com linhas diagonais segundaria superior
                 for(int j = config.COLUNAS-1; j >= 0  ; j--)
                   for(int i=config.LINHAS-1; i >= 0  ; i--)
-                    *(stringPercorrido_superior + i) = *(*(matriz + i) + (j - i));
+                    *(stringPercorrido_superior + i) = *(*(matriz+i) + (j-i));
 
                 // atualizar vetor com linhas diagonais segundaria inferior
                 for(int j = config.COLUNAS-1; j >= 0  ; j--)
                   for(int i=(config.LINHAS-1)-1; i >= 0  ; i--)
-                    *(stringPercorrido_inferior + i) = *(*(matriz + i) + (j + i));
+                    *(stringPercorrido_inferior + i) = *(*(matriz+i) + (j+i));
                 if( verificacao(stringPercorrido_superior) == 1 || verificacao(stringPercorrido_inferior) == 1){  printf(" -> Diagonal Segundaria: "); }
                 
               }
