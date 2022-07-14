@@ -94,7 +94,7 @@ int isSimian(char *dna){
     }
 
     debug(matriz);
-    debugFilhos(matriz);
+    //debugFilhos(matriz);
 
     }else{ printf("\n%s Erro ao alocar matriz dinamica 'matriz' %s\n", __COLOR_RED, __COLOR_FIM ); }
   
@@ -115,7 +115,7 @@ int isSimian(char *dna){
           for (int j = 0; j < config.COLUNAS; j++)
             for (int i = 0; i < config.LINHAS; i++)
               *(stringPercorrido + i) = *(*(matriz + j) + i);
-                if ( verificacao(stringPercorrido) == 1) printf(" -> Vertical");
+          if ( verificacao(stringPercorrido) == 1) printf(" -> Vertical");
             
           //atualizar vetor com linhas diagonais da matriz
           else{
@@ -128,7 +128,7 @@ int isSimian(char *dna){
             for(int j = 0; j < config.COLUNAS ; j++)
               for(int i = 0; i < config.LINHAS-1 ; i++)
                 *(stringPercorrido_inferior + i) = *(*(matriz + i) + i+j);
-                  if ( verificacao(stringPercorrido_superior) == 1 || verificacao(stringPercorrido_inferior) == 1) printf(" -> Diagonal Princiapal");
+            if ( verificacao(stringPercorrido_superior) == 1 || verificacao(stringPercorrido_inferior) == 1) printf(" -> Diagonal Princiapal");
               
               else{
                 // atualizar vetor com linhas diagonais segundaria superior
@@ -140,7 +140,7 @@ int isSimian(char *dna){
                 for(int j = config.COLUNAS-1; j >= 0  ; j--)
                   for(int i=(config.LINHAS-1)-1; i >= 0  ; i--)
                     *(stringPercorrido_inferior + i) = *(*(matriz + i) + (j + i));
-                      if( verificacao(stringPercorrido_superior) == 1 || verificacao(stringPercorrido_inferior) == 1){  printf(" -> Diagonal Segundaria: "); }
+                if( verificacao(stringPercorrido_superior) == 1 || verificacao(stringPercorrido_inferior) == 1){  printf(" -> Diagonal Segundaria: "); }
                 
               }
                   
