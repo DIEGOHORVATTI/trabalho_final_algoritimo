@@ -79,19 +79,16 @@ int isSimian(char *dna){
   matriz = malloc(config.LINHAS * sizeof(char*));
 
   // aloca cada uma das linhas (vetores de config.COLUNAS inteiros)
-  for (int i = 0; i < config.LINHAS; i++){
+  for (int i = 0; i < config.LINHAS; i++)
     matriz[i] = malloc(config.COLUNAS * sizeof(char));
-  }
   
   // atualiza matriz
   if(matriz){
     int y=0;
-    for(int j = 0; j < config.COLUNAS ; j++){
-      for(int i = 0; i < config.LINHAS ; i++){
+    for(int j = 0; j < config.COLUNAS ; j++)
+      for(int i = 0; i < config.LINHAS ; i++)
         *(*(matriz + i) + j) = *(dna+y);
         y++;
-      }
-    }
 
     debug(matriz);
     //debugFilhos(matriz);
@@ -122,12 +119,12 @@ int isSimian(char *dna){
             // atualizar vetor com linhas diagonais superior triangular da matriz
             for(int j = 0; j < config.COLUNAS ; j++)
               for(int i = 0; i < config.LINHAS ; i++)
-                *(stringPercorrido_superior + i) = *(*(matriz + i) + i-j);
+                *(stringPercorrido_superior + i) = *(*(matriz+i) + (i-j));
 
             // atualizar vetor com linhas diagonais inferior triangular da matriz
             for(int j = 0; j < config.COLUNAS ; j++)
               for(int i = 0; i < config.LINHAS-1 ; i++)
-                *(stringPercorrido_inferior + i) = *(*(matriz + i) + i+j);
+                *(stringPercorrido_inferior + i) = *(*(matriz+i) + (i+j));
             if ( verificacao(stringPercorrido_superior) == 1 || verificacao(stringPercorrido_inferior) == 1) printf(" -> Diagonal Princiapal");
               
               else{
