@@ -45,20 +45,24 @@ char* G(){
 
 int verificacao(char *stringPercorrido){
   char *stringPercorrida_A = strstr(stringPercorrido, A());
-  printf("%s", A());
-  if( stringPercorrida_A ) return(1);
+  if( stringPercorrida_A )
+    printf("%s", A()); 
+    return(1);
 
   char *stringPercorrida_T = strstr(stringPercorrido, T());
-  printf("%s", T());
-  if( stringPercorrida_T ) return(1);
+  if( stringPercorrida_T ) 
+    printf("%s", T());
+    return(1);
 
   char *stringPercorrida_C = strstr(stringPercorrido, C());
-  printf("%s", C());
-  if( stringPercorrida_C ) return(1);
+  if( stringPercorrida_C ) 
+    printf("%s", C());
+    return(1);
 
   char *stringPercorrida_G = strstr(stringPercorrido, G());
-  printf("%s", G());
-  if( stringPercorrida_G ) return(1);
+  if( stringPercorrida_G ) 
+    printf("%s", G());
+    return(1);
 }
 
 
@@ -105,23 +109,6 @@ int isSimian(char *dna){
       // atualizar vetor com linhas horizontais da matriz
       for (int i=0; i < config.LINHAS; i++) *(stringPercorrido + i) = *(*(matriz + i) + j);
       if ( verificacao(stringPercorrido) == 1){ printf(" Ocorrencia horizontal: ");}
-        else{
-          if ( verificacao(stringPercorrido) == 1){ printf(" Ocorrencia Vertical: "); }
-            // atualizar vetor com linhas verticais da matriz
-            else{
-              for (int i=0; i < config.LINHAS; i++) *(stringPercorrido + i) = *(*(matriz + j) + i);
-              if ( verificacao(stringPercorrido) == 1) printf(" Ocorrencia Diagonal Princiapal: "); }
-                // atualizar vetor com linhas diagonais principais da matriz
-                else{
-                  for (int i=0; i < config.LINHAS; i++) *(stringPercorrido + i) = *(*(matriz + i) + i);
-                  if( verificacao(stringPercorrido) == 1){  printf(" ocorrencia Diagonal Segundaria: "); }
-                    // atualizar vetor com linhas diagonais segundarias da matriz
-                    else{
-                      for (int i=0; i < config.LINHAS; i++) *(stringPercorrido + i) = *(*(matriz + i) + i);
-                    }
-                }
-            }
-        }
 
       free(stringPercorrido);
     }else{ printf("\n%s Erro ao alocar matriz dinamica 'matriz' %s\n", __COLOR_RED, __COLOR_FIM ); }
