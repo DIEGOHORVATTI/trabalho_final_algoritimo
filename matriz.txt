@@ -1,6 +1,6 @@
-A A C A T G 
-A C C C G A 
-C A C G T G 
-G A C C C G 
-C T T A A A 
-A G T G G A 
+C G A A C G 
+C G T G T T 
+C A A C C A 
+C T A A A C 
+T C A T A C 
+T G G G C A 
