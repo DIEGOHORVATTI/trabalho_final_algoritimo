@@ -1,7 +1,7 @@
 A G T C T G C
-C A T A G T C
-G G A T G T A
-A A A G T C C
-T T A G C T C
-A C C C G T A
+C A A A G T C
+G G T A G T A
+T A G T G G C
+G T T G T A C
+G C T T G T A
 G T A T C A T

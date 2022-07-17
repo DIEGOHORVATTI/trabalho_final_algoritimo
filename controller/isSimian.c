@@ -44,29 +44,32 @@ char* G(){
 
 
 int verificacao(char *stringPercorrido){
-  char *stringPercorrida_A = strstr(stringPercorrido, A());
-  if( stringPercorrida_A ){
-    printf("\n Ocorrencia: %s", A()); 
-    return (1);
-  }
 
-  char *stringPercorrida_T = strstr(stringPercorrido, T());
-  if( stringPercorrida_T ){ 
-    printf("\n Ocorrencia: %s", T());
-    return (1);
-  }
+    printf("\n%s\n", stringPercorrido);
 
-  char *stringPercorrida_C = strstr(stringPercorrido, C());
-  if( stringPercorrida_C ){
-    printf("\n Ocorrencia: %s", C());
-    return (1);
-  }
+    char *stringPercorrida_A = strstr(stringPercorrido, A());
+    if( stringPercorrida_A ){
+      printf("\n Ocorrencia: %s", A()); 
+      return (1);
+    }
 
-  char *stringPercorrida_G = strstr(stringPercorrido, G());
-  if( stringPercorrida_G ){
-    printf("\n Ocorrencia: %s", G());
-    return (1);
-  }
+    char *stringPercorrida_T = strstr(stringPercorrido, T());
+    if( stringPercorrida_T ){
+      printf("\n Ocorrencia: %s", T());
+      return (1);
+    }
+
+    char *stringPercorrida_C = strstr(stringPercorrido, C());
+    if( stringPercorrida_C ){
+      printf("\n Ocorrencia: %s", C());
+      return (1);
+    }
+
+    char *stringPercorrida_G = strstr(stringPercorrido, G());
+    if( stringPercorrida_G ){
+      printf("\n Ocorrencia: %s", G());
+      return (1);
+    }
 }
 
 
@@ -94,7 +97,7 @@ int isSimian(char *dna){
     }
 
     debug(matriz);
-    //debugFilhos(matriz);
+    debugFilhos(matriz);
 
   }else{ printf("\n%s Erro ao alocar matriz dinamica 'matriz' %s\n", __COLOR_RED, __COLOR_FIM ); }
   
@@ -130,18 +133,14 @@ int isSimian(char *dna){
       // atualizar vetor com linhas diagonais superior triangular da matriz
       for(int j = 0; j < config.COLUNAS ; j++){
         for(int i = 0; i < config.LINHAS ; i++){
-          *(stringPercorrido_superior + i) = *(*(matriz+i) + (i-j));
-        }
-        if ( verificacao(stringPercorrido_superior) == 1){
-          printf(" -> Diagonal Princiapal");
-          return (1);
+          *(stringPercorrido_superior + i) = *(*(matriz + i) + (i-j));
         }
       }
 
       // atualizar vetor com linhas diagonais inferior triangular da matriz
       for(int j = 0; j < config.COLUNAS ; j++){
         for(int i = 0; i < config.LINHAS-1 ; i++){
-          *(stringPercorrido_inferior + i) = *(*(matriz+i) + (i+j));
+          *(stringPercorrido_inferior + i) = *(*(matriz + i) + (i+j));
         }
         if ( verificacao(stringPercorrido_inferior) == 1){
           printf(" -> Diagonal Princiapal");
@@ -156,7 +155,7 @@ int isSimian(char *dna){
           *(stringPercorrido_superior + i) = *(*(matriz+i) + (j-i));
         }
         if( verificacao(stringPercorrido_superior) == 1 ){  
-          printf(" -> Diagonal Segundaria: ");
+          printf(" -> Diagonal Segundaria");
           return (1);
         }
       }

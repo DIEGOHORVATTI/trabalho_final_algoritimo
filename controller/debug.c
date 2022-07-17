@@ -61,8 +61,8 @@ void debugFilhos(char **matriz){
       // printa diagonais segundaria superior
       printf("\n Diagonal segundaria superior");
       printf("\n%s ────────────────────────────%s\n", __COLOR_LIGHT_PURPLE, __COLOR_FIM);
-      for(int j = config.COLUNAS-1; j >= 0  ; j--){
-        for(int i=config.LINHAS-1; i >= 0  ; i--){
+      for(int j =config.COLUNAS-1; j >= 0 ; j--){
+        for(int i=config.LINHAS-1; i >= 0 ; i--){
           printf(" %c", *(*(matriz + i) + (j-i)));
         }
         printf("\n");
@@ -72,12 +72,24 @@ void debugFilhos(char **matriz){
       // printa diagonais segundaria inferior
       printf("\n Diagonal segundaria inferior");
       printf("\n%s ────────────────────────────%s\n", __COLOR_LIGHT_PURPLE, __COLOR_FIM);
-      for(int j = config.COLUNAS-1; j >= 0  ; j--){
-        for(int i=(config.LINHAS-1)-1; i >= 0  ; i--){
-          printf(" %c", *(*(matriz + i) + (j+i)));
+      for(int j =config.COLUNAS-1; j >= 0 ; j--){
+        for(int i=config.LINHAS-1; i >= 0 ; i--){
+          // printf(" %c", *(*(matriz + i) + (j-i)));
         }
         printf("\n");
       }
+      printf(" : %c", *(*(matriz + config.LINHAS) + config.COLUNAS) );
+      printf("\n");
+
+    /* // Imprimir elementos abaixo da diagonal secundária
+      for( int i=0; i < config.COLUNAS; i++){
+        for( int j=0; j < config.LINHAS; j++){
+            if(j >= config.COLUNAS - i){
+              printf(" %c ", matriz[i][j]);
+            }
+        }
+        printf("\n");
+    } */
 
     printf("\n");
 }
