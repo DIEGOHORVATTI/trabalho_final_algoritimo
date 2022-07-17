@@ -10,11 +10,6 @@ char dnaLetra(){
 
   char string[] = {'A', 'T', 'C', 'G'};
 
-  // 1 -> A
-  // 2 -> T
-  // 3 -> C
-  // 4 -> G
-
   return (string[(rand() % 4)]);
 }
 
@@ -26,7 +21,7 @@ char** createMatriz(){
   // aloca um vetor de config.LINHAS ponteiros para linhas
   char **matriz = (char **)malloc(config.LINHAS * sizeof(char *));
 
-  // aloca cada uma das linhas (vetores de config.COLUNAS inteiros)
+  // aloca um vetor com todos os elementos da matriz
   for (int i = 0; i < config.LINHAS; i++) *(matriz+i) = (char *)malloc(config.COLUNAS * sizeof(char));
 
   return(matriz);
@@ -36,6 +31,26 @@ char** createMatriz(){
   free(matriz);
 }
 
+//Atribuir matriz com valores aleatórios
+char** ascribeMatriz(){
+
+  s_configuration config = Config();
+  char **matriz = createMatriz();
+
+  // atribuir valores aleatórios a matriz [A, T, C, G]
+  for (int j = 0; j < config.COLUNAS; j++){
+    for (int i = 0; i < config.LINHAS; i++){
+      *(*(matriz + i) + j) = dnaLetra();
+    }
+  }
+  return(matriz);
+
+  // libera a memória da matriz
+  for (int i = 0; i < config.LINHAS; i++) free( *(matriz+i) );
+  free(matriz);
+}
+
+//Passar matriz para arquivo de texto
 void fillMatriz(){
 
   s_configuration config = Config();
@@ -45,17 +60,12 @@ void fillMatriz(){
   char **matriz = createMatriz();
 
   //verifica de matriz foi alocada
-  if(matriz != NULL){
+  if(matriz){
     // verificar se arquivo existe
-    if (arquivo != NULL){
+    if (arquivo){
 
-      // atribuir valores aleatórios a matriz [A, T, C, G]
-      for (int j = 0; j < config.COLUNAS; j++){
-        for (int i = 0; i < config.LINHAS; i++){
-          *(*(matriz + i) + j) = dnaLetra();
-        }
-      }
-      
+      matriz = ascribeMatriz();
+
       //verificar se é para criar arquivo em C aleatório
       if ( strcmp(config.ALEATORIO, "true") == 0) escreverFile(matriz);
 
