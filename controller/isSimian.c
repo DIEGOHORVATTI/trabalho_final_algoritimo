@@ -1,4 +1,4 @@
-// # Ocorrencias de sequencia de dna
+//#### Ocorrencias de sequencia de dna
 char* A(){
   s_configuration config = Config();
   char *A = calloc(config.OCORRENCIA, sizeof(char));
@@ -36,7 +36,7 @@ char* G(){
   free(G);
 }
 
-// # Verificação de sub string
+//#### Verificação de sub string
 int verificaModuloA(char* stringPercorrido){
   char *stringPercorrida_A = strstr(stringPercorrido, A());
   if( stringPercorrida_A ){
@@ -66,7 +66,7 @@ int verificaModuloG(char *stringPercorrido) {
   }
 }
 
-// # verificação em ordem ['horizontal', 'vertical', 'diagonal principal', 'diagonal segundaria'] de ['A', 'T', 'C', 'G'] por ocorrencia
+//#### verificação em ordem de ['A', 'T', 'C', 'G'] por ocorrencia
 int verificacao(char *stringPercorrido){
 
   //debugar strings vindas para verificação
@@ -76,9 +76,9 @@ int verificacao(char *stringPercorrido){
   if (verificaModuloT(stringPercorrido) == 1) return(1);
   if (verificaModuloC(stringPercorrido) == 1) return(1);
   if (verificaModuloG(stringPercorrido) == 1) return(1);
-
 }
 
+//#### preencer matriz 
 char** preencherMatrizArquivo(char* dna){
   s_configuration config = Config();
 
@@ -104,6 +104,109 @@ char** preencherMatrizArquivo(char* dna){
   }else{ printf("\n%s Erro ao alocar matriz dinamica 'matriz' %s\n", __COLOR_RED, __COLOR_FIM ); }
 }
 
+//#### verificação ['horizontal']
+int verificacaoHorizontal(char** matriz){
+  s_configuration config = Config();
+
+  char *stringPercorrido = calloc(config.LINHAS, sizeof(char));
+  // atualizar vetor com linhas horizontais da matriz
+  for(int j = 0; j < config.COLUNAS ; j++){
+    for (int i=0; i < config.LINHAS; i++){
+      *(stringPercorrido + i) = *(*(matriz + i) + j);
+    }
+    if ( verificacao(stringPercorrido) == 1){
+      printf(" -> horizontal");
+      return (1);
+    }
+  }
+
+  // libera a memória
+  free(stringPercorrido);
+}
+
+//#### verificação ['vertical']
+int verificacaoVertical(char** matriz){
+  s_configuration config = Config();
+
+  char *stringPercorrido = calloc(config.LINHAS, sizeof(char));
+  // atualizar vetor com linhas verticais da matriz
+  for (int j = 0; j < config.COLUNAS; j++){
+    for (int i = 0; i < config.LINHAS; i++){
+      *(stringPercorrido + i) = *(*(matriz + j) + i);
+    }
+    if ( verificacao(stringPercorrido) == 1){
+      printf(" -> Vertical");
+      return (1);
+    }
+  }
+
+  // libera a memória
+  free(stringPercorrido);
+}
+
+//#### verificação ['diagonal principal']
+int verificacaoDiagonalPrincipal(char** matriz){
+  s_configuration config = Config();
+
+  char *stringPercorrido_superior = calloc( config.LINHAS, sizeof(char) );
+  char *stringPercorrido_inferior = calloc( config.LINHAS, sizeof(char) );
+
+  // atualizar vetor com linhas diagonais superior triangular da matriz
+  for(int j = 0; j < config.COLUNAS ; j++){
+    for(int i = 0; i < config.LINHAS ; i++){
+      *(stringPercorrido_superior + i) = *(*(matriz + i) + (i-j));
+    }
+  }
+
+  // atualizar vetor com linhas diagonais inferior triangular da matriz
+  for(int j = 0; j < config.COLUNAS ; j++){
+    for(int i = 0; i < config.LINHAS-1 ; i++){
+      *(stringPercorrido_inferior + i) = *(*(matriz + i) + (i+j));
+    }
+    if ( verificacao(stringPercorrido_inferior) == 1){
+      printf(" -> Diagonal Princiapal");
+      return (1);
+    }
+  }
+
+  // libera a memória
+  free(stringPercorrido_superior);
+  free(stringPercorrido_inferior);
+}
+
+//#### verificação ['diagonal segundaria']
+int verificacaoDiagonalSegundaria(char** matriz){
+  s_configuration config = Config();
+
+  char *stringPercorrido_superior = calloc( config.LINHAS, sizeof(char) );
+  char *stringPercorrido_inferior = calloc( config.LINHAS, sizeof(char) );
+
+  // atualizar vetor com linhas diagonais segundaria superior
+  for(int j = config.COLUNAS-1; j >= 0  ; j--){
+    for(int i=config.LINHAS-1; i >= 0  ; i--){
+      *(stringPercorrido_superior + i) = *(*(matriz+i) + (j-i));
+    }
+    if( verificacao(stringPercorrido_superior) == 1 ){  
+      printf(" -> Diagonal Segundaria");
+      return (1);
+    }
+  }
+
+  // atualizar vetor com linhas diagonais segundaria inferior
+  for(int j = config.COLUNAS-1; j >= 0  ; j--){
+    for(int i=(config.LINHAS-1)-1; i >= 0  ; i--){
+      *(stringPercorrido_inferior + i) = *(*(matriz+i) + (j+i));
+    }
+    if( verificacao(stringPercorrido_inferior) == 1 ){  
+      printf(" -> Diagonal Segundaria: ");
+      return (1);
+    }
+  }
+
+  // libera a memória
+  free(stringPercorrido_superior);
+  free(stringPercorrido_inferior);
+}
 
 int isSimian(char *dna){
 
@@ -112,87 +215,11 @@ int isSimian(char *dna){
   //carrega matriz de vetor de arquivo.txt
   char **matriz = preencherMatrizArquivo(dna);
 
-  // alocação do vetor da matriz
-  char *stringPercorrido          = calloc( config.LINHAS, sizeof(char) );
-  char *stringPercorrido_superior = calloc( config.LINHAS, sizeof(char) );
-  char *stringPercorrido_inferior = calloc( config.LINHAS, sizeof(char) );
+  if ( verificacaoHorizontal(matriz) == 1) return(1);
+  if ( verificacaoVertical(matriz) == 1) return(1);
+  if ( verificacaoDiagonalPrincipal(matriz) == 1) return(1);
+  if ( verificacaoDiagonalSegundaria(matriz) == 1) return(1);
 
-  if(stringPercorrido){
-    // atualizar vetor com linhas horizontais da matriz
-    for(int j = 0; j < config.COLUNAS ; j++){
-      for (int i=0; i < config.LINHAS; i++){
-        *(stringPercorrido + i) = *(*(matriz + i) + j);
-      }
-      if ( verificacao(stringPercorrido) == 1){
-        printf(" -> horizontal");
-        return (1);
-      }
-    }
-
-    // atualizar vetor com linhas verticais da matriz
-    for (int j = 0; j < config.COLUNAS; j++){
-      for (int i = 0; i < config.LINHAS; i++){
-        *(stringPercorrido + i) = *(*(matriz + j) + i);
-      }
-      if ( verificacao(stringPercorrido) == 1){
-        printf(" -> Vertical");
-        return (1);
-      }
-    }
-
-    //atualizar vetor com linhas diagonais da matriz
-      // atualizar vetor com linhas diagonais superior triangular da matriz
-      for(int j = 0; j < config.COLUNAS ; j++){
-        for(int i = 0; i < config.LINHAS ; i++){
-          *(stringPercorrido_superior + i) = *(*(matriz + i) + (i-j));
-        }
-      }
-
-      // atualizar vetor com linhas diagonais inferior triangular da matriz
-      for(int j = 0; j < config.COLUNAS ; j++){
-        for(int i = 0; i < config.LINHAS-1 ; i++){
-          *(stringPercorrido_inferior + i) = *(*(matriz + i) + (i+j));
-        }
-        if ( verificacao(stringPercorrido_inferior) == 1){
-          printf(" -> Diagonal Princiapal");
-          return (1);
-        }
-      }
-    
-    //atualizar vetor com linhas diagonais segundarias da matriz
-      // atualizar vetor com linhas diagonais segundaria superior
-      for(int j = config.COLUNAS-1; j >= 0  ; j--){
-        for(int i=config.LINHAS-1; i >= 0  ; i--){
-          *(stringPercorrido_superior + i) = *(*(matriz+i) + (j-i));
-        }
-        if( verificacao(stringPercorrido_superior) == 1 ){  
-          printf(" -> Diagonal Segundaria");
-          return (1);
-        }
-      }
-
-      // atualizar vetor com linhas diagonais segundaria inferior
-      for(int j = config.COLUNAS-1; j >= 0  ; j--){
-        for(int i=(config.LINHAS-1)-1; i >= 0  ; i--){
-          *(stringPercorrido_inferior + i) = *(*(matriz+i) + (j+i));
-        }
-        if( verificacao(stringPercorrido_inferior) == 1 ){  
-          printf(" -> Diagonal Segundaria: ");
-          return (1);
-        }
-      }
-          
-
-  }else{ printf("\n%s Erro ao alocar matriz dinamica 'matriz' %s\n", __COLOR_RED, __COLOR_FIM ); }
-  printf("\n\n");
- 
-
-  // libera a memória
-  free(stringPercorrido);
-  free(stringPercorrido_superior);
-  free(stringPercorrido_inferior);
   //libera memória matriz
   for (int i = 0; i < config.LINHAS; i++) free( *(matriz+i) ); free(matriz);
-
-  return(0);
 }
