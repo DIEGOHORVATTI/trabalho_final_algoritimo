@@ -13,7 +13,8 @@
 #include "../controller/fill_file.c"            // preencher arquivo com dados da matriz de fill_matriz.c
 #include "../controller/debug.c"                // Debug geral
 #include "../controller/fill_matriz.c"          // preencher matriz com dados de DNA aleatório e devolver a matriz para fill_file.c
-#include "../controller/isSimian.c"             // verifica ocorrencias de DNAs 
+#include "../controller/verified_isSimian.c"    // verifica ocorrencias de isSimian.c
+#include "../controller/isSimian.c"             // envia DNA para verificação em verified_isSimian.c
 #include "../controller/read_file.c"            // ler dados do arquivo e atualizar a matriz com os mesmos
 
 //Front end
