@@ -1,11 +1,10 @@
+// Verificação da API de .config:
+// 1) verifica se existe um [cabeçalho]
+// 2) verifica de no cabeçalho a um dado e um valor para ser lido
+// 3) verifica se dado é existente
+// 4) Modificar dado existente para tipo de dado setado no model
 // atoi   -> inteiro, int
 // strdup -> string, *char
-
-// 1) Verificação da API de .config:
-// 2) Existe um [cabeçalho]? 
-// 3) Nesse cabeçalho a um dado e um valor para ser lido?
-// 4) Esse dado é existente?
-// 5) Modificar dado existente. 
 
 static int handler(void* USER, const char* section, const char* name, const char* value){
 

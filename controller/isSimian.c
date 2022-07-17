@@ -19,7 +19,6 @@ char* T(){
 }
 
 char* C(){
-  //[C]
   s_configuration config = Config();
   char *C = calloc(config.OCORRENCIA, sizeof(char));
 
@@ -30,7 +29,6 @@ char* C(){
 }
 
 char* G(){
-  //[G]
   s_configuration config = Config();
   char *G = calloc(config.OCORRENCIA, sizeof(char));
 
@@ -43,31 +41,31 @@ char* G(){
 
 int verificacao(char *stringPercorrido){
 
-    printf("\n%s\n", stringPercorrido);
+  printf("\n%s\n", stringPercorrido);
 
-    char *stringPercorrida_A = strstr(stringPercorrido, A());
-    if( stringPercorrida_A ){
-      printf("\n Ocorrencia: %s", A()); 
-      return (1);
-    }
+  char *stringPercorrida_A = strstr(stringPercorrido, A());
+  if( stringPercorrida_A ){
+    printf("\n Ocorrencia: %s", A()); 
+    return (1);
+  }
 
-    char *stringPercorrida_T = strstr(stringPercorrido, T());
-    if( stringPercorrida_T ){
-      printf("\n Ocorrencia: %s", T());
-      return (1);
-    }
+  char *stringPercorrida_T = strstr(stringPercorrido, T());
+  if( stringPercorrida_T ){
+    printf("\n Ocorrencia: %s", T());
+    return (1);
+  }
 
-    char *stringPercorrida_C = strstr(stringPercorrido, C());
-    if( stringPercorrida_C ){
-      printf("\n Ocorrencia: %s", C());
-      return (1);
-    }
+  char *stringPercorrida_C = strstr(stringPercorrido, C());
+  if( stringPercorrida_C ){
+    printf("\n Ocorrencia: %s", C());
+    return (1);
+  }
 
-    char *stringPercorrida_G = strstr(stringPercorrido, G());
-    if( stringPercorrida_G ){
-      printf("\n Ocorrencia: %s", G());
-      return (1);
-    }
+  char *stringPercorrida_G = strstr(stringPercorrido, G());
+  if( stringPercorrida_G ){
+    printf("\n Ocorrencia: %s", G());
+    return (1);
+  }
 }
 
 
