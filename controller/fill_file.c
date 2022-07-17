@@ -7,7 +7,6 @@
   a+ -> leitura e escrita (adiciona ao final do arquivo)
 */
 
-
 void escreverFile(char **matriz){
 
   s_configuration config = Config();

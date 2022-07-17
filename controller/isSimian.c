@@ -1,5 +1,4 @@
 char* A(){
-  //[A]
   s_configuration config = Config();
   char *A = calloc(config.OCORRENCIA, sizeof(char));
 
@@ -10,7 +9,6 @@ char* A(){
 }
 
 char* T(){
-  //[T]
   s_configuration config = Config();
   char *T = calloc(config.OCORRENCIA, sizeof(char));
 

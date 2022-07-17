@@ -51,7 +51,7 @@ char** ascribeMatriz(){
   for (int i = 0; i < config.LINHAS; i++) free( *(matriz+i) ); free(matriz);
 }
 
-//Passar matriz para arquivo de texto
+//Passar matriz para fill_file.c
 void fillMatriz(){
   s_configuration config = Config();
   
