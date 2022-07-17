@@ -61,9 +61,10 @@ void fillMatriz(){
 
   // verificar se arquivo existe
   if(arquivo){
+
     //verificar se é para criar arquivo em C aleatório
     if ( strcmp(config.ALEATORIO, "true") == 0) escreverFile(matriz);
-
+    
   }else{ printf("\n%s Erro ao abrir o arquivo '%s'%s\n", __COLOR_RED, config.ARQUIVO_TXT, __COLOR_FIM); }
 
   fclose(arquivo);
