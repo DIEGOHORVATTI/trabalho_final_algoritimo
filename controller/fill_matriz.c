@@ -24,11 +24,13 @@ char** createMatriz(){
   // aloca um vetor com todos os elementos da matriz
   for (int i = 0; i < config.LINHAS; i++) *(matriz+i) = (char *)malloc(config.COLUNAS * sizeof(char));
 
-  return(matriz);
-
+  // verifica de matriz foi alocada
+  if(matriz){
+    return(matriz);
+  }else{ printf("\n%s Erro ao alocar matriz dinamica 'matriz' %s\n", __COLOR_RED, __COLOR_FIM ); }
+  
   // libera a memória da matriz
-  for (int i = 0; i < config.LINHAS; i++) free(matriz[i]);
-  free(matriz);
+  for (int i = 0; i < config.LINHAS; i++) free( *(matriz+i) ); free(matriz);
 }
 
 //Atribuir matriz com valores aleatórios
@@ -46,37 +48,26 @@ char** ascribeMatriz(){
   return(matriz);
 
   // libera a memória da matriz
-  for (int i = 0; i < config.LINHAS; i++) free( *(matriz+i) );
-  free(matriz);
+  for (int i = 0; i < config.LINHAS; i++) free( *(matriz+i) ); free(matriz);
 }
 
 //Passar matriz para arquivo de texto
 void fillMatriz(){
-
   s_configuration config = Config();
-
+  
   FILE *arquivo = fopen(config.ARQUIVO_TXT, "r");
-
   char **matriz = createMatriz();
+  matriz = ascribeMatriz();
 
-  //verifica de matriz foi alocada
-  if(matriz){
-    // verificar se arquivo existe
-    if (arquivo){
+  // verificar se arquivo existe
+  if(arquivo){
+    //verificar se é para criar arquivo em C aleatório
+    if ( strcmp(config.ALEATORIO, "true") == 0) escreverFile(matriz);
 
-      matriz = ascribeMatriz();
-
-      //verificar se é para criar arquivo em C aleatório
-      if ( strcmp(config.ALEATORIO, "true") == 0) escreverFile(matriz);
-
-      // libera a memória da matriz
-      for (int i = 0; i < config.LINHAS; i++) free(matriz[i]);
-      free(matriz);
-      // libera a memória do nome de aruivo de texto
-      free((void*) config.ARQUIVO_TXT);
-
-    }else{ printf("\n%s Erro ao abrir o arquivo '%s'%s\n", __COLOR_RED, config.ARQUIVO_TXT, __COLOR_FIM); }
-  }else{ printf("\n%s Erro ao alocar matriz dinamica 'matriz' %s\n", __COLOR_RED, __COLOR_FIM ); }
+  }else{ printf("\n%s Erro ao abrir o arquivo '%s'%s\n", __COLOR_RED, config.ARQUIVO_TXT, __COLOR_FIM); }
 
   fclose(arquivo);
+  free((void*) config.ARQUIVO_TXT);
+  // libera a memória da matriz
+  for (int i = 0; i < config.LINHAS; i++) free( *(matriz+i) ); free(matriz);
 }
