@@ -1,7 +1,7 @@
 int verificacaoVertical(char** matriz){
   s_configuration config = Config();
 
-  char *stringPercorrido = calloc(config.LINHAS, sizeof(char));
+  char *stringPercorrido = (char*)calloc(config.LINHAS, sizeof(char));
   // atualizar vetor com linhas verticais da matriz
   for (int j = 0; j < config.COLUNAS; j++){
     for (int i = 0; i < config.LINHAS; i++){

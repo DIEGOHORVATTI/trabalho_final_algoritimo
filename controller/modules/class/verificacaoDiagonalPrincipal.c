@@ -1,8 +1,7 @@
 int verificacaoDiagonalPrincipal_superior(char** matriz){
   s_configuration config = Config();
 
-  char *stringPercorrido = calloc( config.LINHAS, sizeof(char) );
-  // atualizar vetor com linhas diagonais segundaria superior
+  char *stringPercorrido = (char*)calloc( config.LINHAS, sizeof(char) );
   // atualizar vetor com linhas diagonais superior triangular da matriz
   for(int j = 0; j < config.COLUNAS ; j++){
     for(int i = 0; i < config.LINHAS ; i++){
@@ -20,9 +19,7 @@ int verificacaoDiagonalPrincipal_superior(char** matriz){
 int verificacaoDiagonalPrincipal_inferior(char** matriz){
   s_configuration config = Config();
 
-  char *stringPercorrido = calloc( config.LINHAS, sizeof(char) );
-  // atualizar vetor com linhas diagonais segundaria superior
-  // atualizar vetor com linhas diagonais superior triangular da matriz
+  char *stringPercorrido = (char*)calloc( config.LINHAS, sizeof(char) );
   // atualizar vetor com linhas diagonais inferior triangular da matriz
   for(int j = 0; j < config.COLUNAS ; j++){
     for(int i = 0; i < config.LINHAS-1 ; i++){

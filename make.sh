@@ -149,6 +149,9 @@ for i in "$@"; do
 				n | N)
 					exit
 				;;
+				git)
+					f_GitRead
+				;;
 				*)
 					exit
 				;;
@@ -164,6 +167,9 @@ for i in "$@"; do
 				;;
 				n | N)
 					exit
+				;;
+				git)
+					f_GitRead
 				;;
 				*)
 					exit
