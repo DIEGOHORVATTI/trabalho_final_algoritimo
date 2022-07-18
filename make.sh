@@ -151,6 +151,7 @@ for i in "$@"; do
 				;;
 				git)
 					f_GitRead
+					./make --start
 				;;
 				*)
 					exit
@@ -170,6 +171,7 @@ for i in "$@"; do
 				;;
 				git)
 					f_GitRead
+					./make --start
 				;;
 				*)
 					exit
