@@ -1,4 +1,3 @@
-//#### verificação ['diagonal principal']
 int verificacaoDiagonalPrincipal(char** matriz){
   s_configuration config = Config();
 
@@ -9,6 +8,10 @@ int verificacaoDiagonalPrincipal(char** matriz){
   for(int j = 0; j < config.COLUNAS ; j++){
     for(int i = 0; i < config.LINHAS ; i++){
       *(stringPercorrido_superior + i) = *(*(matriz + i) + (i-j));
+    }
+    if ( verificacao(stringPercorrido_inferior) == 1){
+      printf(" -> Diagonal Princiapal");
+      return (1);
     }
   }
 

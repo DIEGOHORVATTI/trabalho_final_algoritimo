@@ -1,4 +1,3 @@
-//#### verificação ['horizontal']
 int verificacaoHorizontal(char** matriz){
   s_configuration config = Config();
 
