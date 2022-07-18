@@ -37,7 +37,6 @@ int verificacaoDiagonalSegundaria_inferior(char** matriz){
 
 
 int verificacaoDiagonalSegundaria(char** matriz){
-  
-  verificacaoDiagonalSegundaria_superior(matriz);
-  verificacaoDiagonalSegundaria_inferior(matriz);
+  if (verificacaoDiagonalSegundaria_superior(matriz) == 1) return(1);
+  if (verificacaoDiagonalSegundaria_inferior(matriz) == 1) return(1);
 }
