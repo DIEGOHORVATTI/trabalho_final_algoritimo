@@ -9,7 +9,7 @@ int lerFile(){
   vetorDNA = malloc( (config.COLUNAS * config.LINHAS) * (sizeof(char*)) );
   
   //verificar se vetor DNA foi alocado
-  if ( vetorDNA ){
+  if(vetorDNA){
 
     // copiar todo o conteudo do arquivo.txt para o vetor dinamico vetorDNA 
     for( int i=0; !(feof(arquivo)); i++ ){
@@ -18,9 +18,7 @@ int lerFile(){
 
     return(isSimian(vetorDNA));
 
-    }else{ printf("\n%s Erro ao alocar vetor dinamico de matriz: 'VetorDNA' %s\n", __COLOR_RED, __COLOR_FIM ); }
-  
-
+  }else{ printf("\n%s Erro ao alocar vetor dinamico de matriz: 'VetorDNA' %s\n", __COLOR_RED, __COLOR_FIM ); }
   free(vetorDNA);
   fclose(arquivo);
   free((void*) config.ARQUIVO_TXT);
