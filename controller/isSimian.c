@@ -7,7 +7,7 @@ int isSimian(char *dna){
 
   //deburação
   debug(matriz);
-  debugFilhos(matriz);
+  //debugFilhos(matriz);
 
   // verificação alvo ['horizontal', 'vertical', 'diagonal principal', 'diagonal segundaria']
   if ( verificacaoHorizontal         (matriz) == 1) return(1);
