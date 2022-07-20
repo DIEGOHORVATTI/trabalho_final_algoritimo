@@ -1,9 +1,9 @@
 void printDNA(){
-  printf("   ___       ___       ___       __");
+  printf("%s   ___       ___       ___       __", __COLOR_BLUE);
   printf("\n  /---\\     /---\\     /---\\     /");
-  printf("%s\n /  X  \\ Verificador de Siminos/  /%s", __COLOR_LIGHT_GREEN, __COLOR_FIM);
+  printf("\n /  X  \\ %s%sVerificador de Siminos%s%s/  /", __COLOR_FIM, __COLOR_LIGHT_PURPLE, __COLOR_FIM, __COLOR_BLUE);
   printf("\n/--/ \\--\\ /--/ \\--\\ /--/ \\--\\ /--/");
-  printf("\n      \\__X__/   \\__X__/   \\__X__/\n\n");
+  printf("\n      \\__%s%sX%s%s__/   \\__X__/   \\__X__/%s\n\n", __COLOR_FIM, __COLOR_CYAN, __COLOR_FIM, __COLOR_BLUE, __COLOR_FIM);
 }
 
 void printSimio(){
@@ -58,6 +58,5 @@ void view_index(){
     printf("\n\n [[ %sHumano%s ]]", __COLOR_LIGHT_BLUE, __COLOR_FIM);
     printHumano();
   }
-  
   
 }

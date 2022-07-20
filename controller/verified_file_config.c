@@ -4,8 +4,8 @@
 s_configuration Config(){
   s_configuration config;
 
-  if (ini_parse("./config.ini", handler, &config) < 0) {
-    printf("%s File not found: './config.ini'%s\n", __COLOR_RED, __COLOR_FIM);
+  if (ini_parse("./config.conf", handler, &config) < 0) {
+    printf("%s File not found: './config.conf'%s\n", __COLOR_RED, __COLOR_FIM);
   }
 
   return(config);
