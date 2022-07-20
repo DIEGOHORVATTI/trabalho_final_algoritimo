@@ -3,6 +3,7 @@
 
 //##Globais
     #include "../src/colors.h"                             // global Color
+    #include "../src/ascii.c"                              // Imprimir textos e imagens em ascii
 
 //##Models
     #include "../model/bd.c"                               // model database
@@ -15,6 +16,7 @@
     #include "../controller/modules/verified_sub_string.c" // verifica se á ocorrencias em string
     #include "../controller/modules/verified_isSimian.c"   // verifica todos os as classes de ocorrencias
     //Classes de ocorrencias
+    #include "../controller/modules/class/verificacaoLetras.c"
     #include "../controller/modules/class/verificacaoHorizontal.c"
     #include "../controller/modules/class/verificacaoVertical.c"
     #include "../controller/modules/class/verificacaoDiagonalPrincipal.c"

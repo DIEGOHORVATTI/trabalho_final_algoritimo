@@ -10,6 +10,7 @@ int isSimian(char *dna){
   if ( strcmp(config.STRINGS_MATRIZ, "true") == 0) debugFilhos(matriz);
 
   // verificação alvo ['horizontal', 'vertical', 'diagonal principal', 'diagonal segundaria']
+  verificaLetra(matriz);
   if ( verificacaoHorizontal         (matriz) == 1) return(1);
   if ( verificacaoVertical           (matriz) == 1) return(1);
   if ( verificacaoDiagonalPrincipal  (matriz) == 1) return(1);
