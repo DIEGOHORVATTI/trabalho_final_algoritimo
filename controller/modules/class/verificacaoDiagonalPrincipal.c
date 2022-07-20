@@ -7,9 +7,11 @@ int verificacaoDiagonalPrincipal_superior(char** matriz){
     for(int i = 0; i < j+1 ; i++){
       *(stringPercorrido + i) = *(*(matriz + (config.LINHAS-i)-1 ) + (j-i) );
     }
-    if ( verificacao(stringPercorrido) == 1){
-      printf(" -> Diagonal Princiapal");
-      return (1);
+    if(strlen(stringPercorrido) >= config.OCORRENCIA){
+      if ( verificacao(stringPercorrido) == 1){
+        printf(" -> Diagonal Princiapal");
+        return (1);
+      }
     }
   }
   // libera a memória
@@ -25,9 +27,11 @@ int verificacaoDiagonalPrincipal_inferior(char** matriz){
     for(int i = 0; i < config.LINHAS-j ; i++){
       *(stringPercorrido + i) = *(*(matriz + i ) + (j+i) );
     }
-    if ( verificacao(stringPercorrido) == 1){
-      printf(" -> Diagonal Princiapal");
-      return (1);
+    if(strlen(stringPercorrido) >= config.OCORRENCIA){
+      if ( verificacao(stringPercorrido) == 1){
+        printf(" -> Diagonal Princiapal");
+        return (1);
+      }
     }
   }
   // libera a memória

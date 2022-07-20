@@ -7,7 +7,7 @@ int verificaLetra(char** matriz){
       
       if ( !(*(*(matriz + i) + j) == 'T' || *(*(matriz + i) + j) == 'A'|| *(*(matriz + i) + j) == 'C' || *(*(matriz + i) + j) == 'G') ){
         printFail();
-        printf("\n%s ERRO: A letra ['%c'], na posição\n [Linha: %d][Coluna: %d]\n Não faz parte das bases nitrogenadas\n ['T', 'A', 'C', G']\n Arquivo '%s'%s", __COLOR_LIGHT_RED, *(*(matriz + i) + j), i+1, j+1, config.ARQUIVO_TXT ,__COLOR_FIM);
+        printf("\n%s ERRO: A letra ['%c'], na posição\n [Linha: %d][Coluna: %d]\n Não faz parte das bases nitrogenadas\n ['T', 'A', 'C', G']\n Arquivo: '%s'%s", __COLOR_LIGHT_RED, *(*(matriz + i) + j), i+1, j+1, config.ARQUIVO_TXT ,__COLOR_FIM);
         exit(0);
         free((void *)config.ARQUIVO_TXT);
       }
