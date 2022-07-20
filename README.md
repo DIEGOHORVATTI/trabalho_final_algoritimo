@@ -40,7 +40,7 @@ int isSimian (char[] dna); // Exemplo da assinatura em C
 
 Você receberá como parâmetro um array de char (string) que representa cada linha de uma tabela (matriz) quadrada de (NxN) com a sequência de DNA, como no exemplo abaixo:
 
-<img  src="./src/img.png" width="100%"/>
+<img src="./src/img/img.png" width="100%" />
 
 As letras da string só podem ser: (A, T, C, G), que representa cada base nitrogenada do DNA.
 
@@ -74,4 +74,4 @@ O que entregar
   * Considere a performance do algoritmo e o tempo de resposta da aplicação.
 
 <br/>
-<img src="./src/debug.png" width="100%" />
+<img src="./src/img/debug.png" width="100%" />
