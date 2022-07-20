@@ -4,8 +4,8 @@ int verificacaoDiagonalPrincipal_superior(char** matriz){
   char *stringPercorrido = (char*)calloc( config.LINHAS, sizeof(char) );
   // atualizar vetor com linhas diagonais superior triangular da matriz
   for(int j = 0; j < config.COLUNAS ; j++){
-    for(int i = 0; i < config.LINHAS ; i++){
-      *(stringPercorrido + i) = *(*(matriz + i) + (i-j));
+    for(int i = 0; i < j+1 ; i++){
+      *(stringPercorrido + i) = *(*(matriz + (config.LINHAS-i)-1 ) + (j-i) );
     }
     if ( verificacao(stringPercorrido) == 1){
       printf(" -> Diagonal Princiapal");
@@ -21,9 +21,9 @@ int verificacaoDiagonalPrincipal_inferior(char** matriz){
 
   char *stringPercorrido = (char*)calloc( config.LINHAS, sizeof(char) );
   // atualizar vetor com linhas diagonais inferior triangular da matriz
-  for(int j = 0; j < config.COLUNAS ; j++){
-    for(int i = 0; i < config.LINHAS-1 ; i++){
-      *(stringPercorrido + i) = *(*(matriz + i) + (i+j));
+  for(int j=(config.COLUNAS)-1; j >= 0; j--){
+    for(int i = 0; i < config.LINHAS-j ; i++){
+      *(stringPercorrido + i) = *(*(matriz + i ) + (j+i) );
     }
     if ( verificacao(stringPercorrido) == 1){
       printf(" -> Diagonal Princiapal");

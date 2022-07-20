@@ -28,6 +28,8 @@
     //Envio de verificação e DNA
     #include "../controller/isSimian.c"                    // envia DNA para verificação em verified_isSimian.c
     #include "../controller/ler_arquivo.c"                 // preencher arquivo com dados da matriz de fill_matriz.c
+    // testes unitarios com unity
+    #include "../src/unity.h"                              // testar todas as funções, procedimentos e métodos 
 
 //##Front end
     #include "../view/index.c"                             // visualização de front end

@@ -12,15 +12,16 @@ static int handler(void* USER, const char* section, const char* name, const char
 
     #define MATCH(s, n) strcmp(section, s) == 0 && strcmp(name, n) == 0
     
-    if (MATCH("MATRIZ", "LINHAS")) { pconfig->LINHAS = atoi(value); }
+    if      (MATCH("MATRIZ", "LINHAS")) { pconfig->LINHAS = atoi(value);}
+    else if (MATCH("MATRIZ", "COLUNAS")) { pconfig->COLUNAS = atoi(value);}
 
-    else if(MATCH("MATRIZ", "COLUNAS")) { pconfig->COLUNAS = atoi(value); }
+    else if (MATCH("USER", "ALEATORIO")) { pconfig->ALEATORIO = strdup(value);}
+    else if (MATCH("USER", "OCORRENCIA")) { pconfig->OCORRENCIA = atoi(value);}
+    else if (MATCH("USER", "ARQUIVO_TXT")) { pconfig->ARQUIVO_TXT = strdup(value);} 
 
-    else if(MATCH("USER", "OCORRENCIA")){ pconfig->OCORRENCIA = atoi(value); }
-
-    else if(MATCH("USER", "ALEATORIO")){ pconfig->ALEATORIO = strdup(value); }
-
-    else if (MATCH("USER", "ARQUIVO_TXT")){ pconfig->ARQUIVO_TXT = strdup(value); } 
+    else if (MATCH("DEBURACAO", "MATRIZ")) { pconfig->MATRIZ   = strdup(value);}
+    else if (MATCH("DEBURACAO", "STRINGS_MATRIZ")) { pconfig->STRINGS_MATRIZ   = strdup(value);}
+    else if (MATCH("DEBURACAO", "STRINGS_VERIFICACAO")) { pconfig->STRINGS_VERIFICACAO   = strdup(value);}
     
     else{ return(0); }
 

@@ -6,8 +6,8 @@ int isSimian(char *dna){
   char **matriz = preencherMatrizArquivo(dna);
 
   //deburação
-  debug(matriz);
-  debugFilhos(matriz);
+  if ( strcmp(config.MATRIZ, "true") == 0) debug(matriz);
+  if ( strcmp(config.STRINGS_MATRIZ, "true") == 0) debugFilhos(matriz);
 
   // verificação alvo ['horizontal', 'vertical', 'diagonal principal', 'diagonal segundaria']
   if ( verificacaoHorizontal         (matriz) == 1) return(1);
@@ -17,4 +17,6 @@ int isSimian(char *dna){
 
   //libera memória matriz
   for (int i = 0; i < config.LINHAS; i++) free( *(matriz+i) ); free(matriz);
+  free((void *)config.MATRIZ);
+  free((void *)config.STRINGS_VERIFICACAO);
 }
