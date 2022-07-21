@@ -29,9 +29,6 @@ Resolver o problema abaixo seguindo, obrigatoriamente, as regras
 
 * OBS 2: Apresentação/entrega até no máximo dia 14/07/2022 (último dia de aula).
 
-
-<hr/>
-
 Problema (desafio) Símios:
 Em um futuro distante, na cadeia evolutiva, os símios e os humanos estão cada vez mais próximos. Por esse motivo é muito difícil distinguir quem é humano e quem é símio. Você é um cientista contratado para desenvolver um projeto que detecta se uma sequência de DNA pertence a um humano ou a um símio. Para isso, você precisar desenvolver um programa, com um método ou função com a seguinte assinatura em C:
 
@@ -74,4 +71,6 @@ O que entregar
   * Considere a performance do algoritmo e o tempo de resposta da aplicação.
 
 <br/>
-<img src="./src/img/debug.png" width="100%" />
+<a href="./relatorio.md">
+  <img src="./src/img/debug.png" width="100%" />
+</a>

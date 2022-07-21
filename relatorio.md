@@ -50,7 +50,7 @@ Algo muito importante no trabalho é  a função do tipo de dado struct contido 
 Outra coisa interessante é a possibilidade de o programa criar matrizes dinâmicas e randômicas caso for especificado no arquivo de configuração "ALEATORIO" como 'true' com isso ele criará uma matriz de DNA aleatória com as linhas e colunas do arquivo de configuração.
 <br />
 <img src="./src/img/exemplo.gif" width="100%" />
-<br/><hr/><br/>
+<br/>
 
 Como no exemplo acima na verdade a verificão das diagonais principais e segundarias ele é repartido pela metade ['Diagonal principal Superior', 'Diagonal principal inferior'] assim na verdade temos 6 verificações e não 4 porem como está na mesma função englobando as duas é como se fosse uma.
 <br/>
@@ -60,5 +60,5 @@ Outra coisa importante destacar é que só é passado a string para verificaçã
 * quando a primeira ocorrência for achada na ordem ['Horizontal', 'Vertical', 'Diagonal Principal', 'Diagonal segundaria'] o programa encerrará 
 * caso não encontre nem uma ocorrência em, nem uma das verificações ele retornará humano
 <br />
-<img src="./src/img/failLetra.gif" width="100%" />
-<br/><hr/><br/>
+  <img src="./src/img/failLetra.gif" width="100%" />
+<br/>
