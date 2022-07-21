@@ -40,7 +40,7 @@ function fHelp(){
 	echo -e "│ optativa: 'cppcheck', 'wget', 'git'   │"
 	echo -e "│                                       │"
 	echo -e "│                                       │"
-	echo -e "│ used: make --start                    │"
+	echo -e "│ used: ./make.sh --start               │"
 	echo -e "│                                       │"
 	echo -e "└───────────────────────────────────────┘"
 	echo -e "\n"

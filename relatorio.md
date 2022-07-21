@@ -1,3 +1,36 @@
+<hr/><h2>Usabilidade</h2>
+
+```shell
+┌───────────────────────────────────────┐
+│                                       │
+│ [ info ]                              │
+│ -v, --version.: versão do softwere    │
+│ -h, --help....: informações das flags │
+│                                       │
+│ [ dev ]                               │
+│ --create-file.: criar arquivo.c       │
+│ --gitignore...: criar .gitgnore       │
+│ --git.........: commit & push         │
+│ --build.......: verificação de bugs   │
+│                                       │
+│ [ user ]                              │
+│ --start.......: iniciar compilação    │
+│ --config......: arquivo configuração  │
+│                                       │
+│ [ dependencies ]                      │
+│ obrigratório: 'gcc or g++'            │
+│ optativa: 'cppcheck', 'wget', 'git'   │
+│                                       │
+│                                       │
+│ used: ./make.sh --start               │
+│                                       │
+└───────────────────────────────────────┘
+```
+exemplo de uso
+```shell
+bash ./make.sh --start 
+```
+<hr/><h2>Relatório</h2>
 Percorrer cada Linha possível da matriz e procurar ocorrências sequidas de bases nitrogenadas.
 <br />
 <img src="./src/img/linhasColunas.png" width="100%" />
@@ -40,12 +73,11 @@ Já no front-end após eu 'penar' um pouquinho consegui fazer um front end até 
 <img src="./src/img/debug.png" width="100%" />
 <br/>
 
-<hr/>Debug das matrizes da sala de aula<hr/>
-<br />
+<br/><hr/><h2>Debug das matrizes da sala de aula</h2>
 <img src="./src/img/debugSala.gif" width="100%" />
 <br/>
 
-<hr/>NOTAS DE PROGRAMAÇÃO<hr/>
+<br/><hr/><h2>NOTAS DE PROGRAMAÇÃO</h2>
 Algo muito importante no trabalho é  a função do tipo de dado struct contido no "model" com ele foi bem legal ficar alterando os dados ao decorrer do programa.<br/> 
 Outra coisa interessante é a possibilidade de o programa criar matrizes dinâmicas e randômicas caso for especificado no arquivo de configuração "ALEATORIO" como 'true' com isso ele criará uma matriz de DNA aleatória com as linhas e colunas do arquivo de configuração.
 <br />
